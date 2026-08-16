@@ -1,0 +1,5 @@
+.git
+.wrangler
+.gitignore
+.assetsignore
+generate_categories.py

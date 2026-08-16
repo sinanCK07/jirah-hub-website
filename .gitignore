@@ -1,0 +1,21 @@
+.wrangler/
+node_modules/
+
+# Raw uploaded source images — large originals, not used directly by the
+# live site (processed .webp versions in assets/ are what's referenced).
+# Kept locally for re-processing later; not tracked in the repo.
+assets/AIR FRESHNER.png
+assets/ALUMINIUM FOIL.png
+assets/CLEANING PRODUCTS.png
+assets/CLING FILM.png
+assets/DISPOSIBLE PRODUCTS.PNG
+assets/FOOD PACKING.png
+assets/GARBAGE BAG.png
+assets/Logo.PNG
+assets/OFFICE STATIONARY.png
+assets/PAPER CUPS.png
+assets/PAPER PLATES.png
+assets/T SHIRT.png
+assets/TEA PACKET.png
+assets/TISSUE PAPER.png
+assets/ChatGPT Image*.png
