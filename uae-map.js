@@ -11,8 +11,10 @@
   ];
   const NEIGHBOURS = { '512': 'OMAN', '682': 'SAUDI ARABIA', '634': 'QATAR' };
 
-  const ready = () => new Promise((res) => {
-    const t = setInterval(() => { if (window.d3 && window.topojson) { clearInterval(t); res(); } }, 40);
+  const ready = () => new Promise((res, rej) => {
+    if (window.d3 && window.topojson) { res(); return; }
+    const t = setInterval(() => { if (window.d3 && window.topojson) { clearInterval(t); clearTimeout(to); res(); } }, 40);
+    const to = setTimeout(() => { clearInterval(t); rej(new Error('map libraries failed to load')); }, 10000);
   });
   let topoPromise = null;
 
@@ -26,6 +28,7 @@
         '@keyframes flow{to{stroke-dashoffset:-40}}' +
         '.route{animation:flow 3.2s linear infinite}' +
         'text{font-family:Jost,system-ui,sans-serif}' +
+        '.fallback{display:flex;align-items:center;justify-content:center;height:100%;font:13px Jost,system-ui,sans-serif;color:#66748C;text-align:center;padding:20px}' +
         '</style><div style="width:100%;height:100%"></div>';
       this._host = root.lastChild;
       this.draw();
@@ -35,6 +38,16 @@
     disconnectedCallback() { if (this._ro) this._ro.disconnect(); }
 
     async draw() {
+      try {
+        await this._render();
+        this.dispatchEvent(new CustomEvent('map-ready', { bubbles: true, composed: true }));
+      } catch (err) {
+        this._host.innerHTML = '<div class="fallback">Coverage map unavailable right now — see the emirate list above.</div>';
+        this.dispatchEvent(new CustomEvent('map-error', { bubbles: true, composed: true, detail: err }));
+      }
+    }
+
+    async _render() {
       await ready();
       const d3 = window.d3;
       if (!topoPromise) topoPromise = d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json');

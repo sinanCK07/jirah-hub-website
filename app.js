@@ -9,29 +9,49 @@
 
   /* ---------------- Data ---------------- */
   const CATALOG = [
-    { key: 'cups', name: 'Paper Cups', cat: 'Foodservice', seg: 'food', sub: 'Single, double wall & ripple, 4–16 oz with lids.', price: 'AED 96 / carton', img: 'assets/cups.jpg' },
-    { key: 'plates', name: 'Paper Plates', cat: 'Foodservice', seg: 'food', sub: 'Round, square and compartment, paper & bagasse.', price: 'AED 68 / carton', img: 'assets/plates.jpg' },
-    { key: 'packaging', name: 'Kraft Food Boxes', cat: 'Packaging', seg: 'food', sub: 'Leak-resistant boxes, clamshells and carry bags.', price: 'AED 115 / carton', img: 'assets/packaging.jpg' },
-    { key: 'foil', name: 'Foil & Cling Film', cat: 'Packaging', seg: 'food', sub: 'Catering rolls, hot-food containers, every gauge.', price: 'AED 88 / carton', img: 'assets/foil.jpg' },
-    { key: 'disposables', name: 'Disposables', cat: 'Foodservice', seg: 'food', sub: 'Cutlery, straws, stirrers and portion cups.', price: 'AED 54 / carton', img: 'assets/disposables.jpg' },
-    { key: 'tissue', name: 'Tissue Paper', cat: 'Hygiene', seg: 'hygiene', sub: 'Facial, kitchen, toilet rolls and napkins.', price: 'AED 78 / carton', img: 'assets/tissue.jpg' },
-    { key: 'bags', name: 'Garbage Bags', cat: 'Hygiene', seg: 'hygiene', sub: 'Bin liners and refuse sacks, roll or flat.', price: 'AED 62 / carton', img: 'assets/bags.jpg' },
-    { key: 'freshener', name: 'Air Freshener', cat: 'Hygiene', seg: 'hygiene', sub: 'Aerosol and auto-dispenser fragrance ranges.', price: 'AED 18 / can', img: 'assets/freshener.jpg' },
-    { key: 'cleaning', name: 'Cleaning Range', cat: 'Cleaning', seg: 'hygiene', sub: 'Detergents, sanitisers and the tools to use them.', price: 'AED 42 / 5 L', img: 'assets/cleaning.jpg' },
-    { key: 'stationery', name: 'Office Stationery', cat: 'Office', seg: 'office', sub: 'Pens, paper, files and everyday desk supplies.', price: 'AED 24 / box', img: 'assets/stationery.jpg' },
-    { key: 'tea', name: 'Premium Tea Powder', cat: 'Pantry', seg: 'brand', sub: 'Strong, consistent blends in retail & catering packs.', price: 'AED 32 / kg', img: 'assets/tea.jpg' },
-    { key: 'tees', name: 'Corporate T-Shirts', cat: 'Branded', seg: 'brand', sub: 'Polo and round-neck, printed with your logo.', price: 'AED 34 / pc', img: 'assets/tees.jpg' }
+    { key: 'cups', name: 'Paper Cups', cat: 'Foodservice', seg: 'food', sub: 'Single, double wall & ripple, 4–16 oz with lids.', price: 'AED 96 / carton', img: 'assets/cups.webp', img2: 'assets/cups-alt.webp' },
+    { key: 'plates', name: 'Paper Plates', cat: 'Foodservice', seg: 'food', sub: 'Round, square and compartment, paper & bagasse.', price: 'AED 68 / carton', img: 'assets/plates.webp', img2: 'assets/plates-alt.webp' },
+    { key: 'packaging', name: 'Kraft Food Boxes', cat: 'Packaging', seg: 'food', sub: 'Leak-resistant boxes, clamshells and carry bags.', price: 'AED 115 / carton', img: 'assets/packaging.webp', img2: 'assets/packaging-alt.webp' },
+    { key: 'foil', name: 'Foil & Cling Film', cat: 'Packaging', seg: 'food', sub: 'Catering rolls, hot-food containers, every gauge.', price: 'AED 88 / carton', img: 'assets/foil.webp', img2: 'assets/foil-alt.webp' },
+    { key: 'disposables', name: 'Disposables', cat: 'Foodservice', seg: 'food', sub: 'Cutlery, straws, stirrers and portion cups.', price: 'AED 54 / carton', img: 'assets/disposables.webp', img2: 'assets/disposables-alt.webp' },
+    { key: 'tissue', name: 'Tissue Paper', cat: 'Hygiene', seg: 'hygiene', sub: 'Facial, kitchen, toilet rolls and napkins.', price: 'AED 78 / carton', img: 'assets/tissue.webp', img2: 'assets/tissue-alt.webp' },
+    { key: 'bags', name: 'Garbage Bags', cat: 'Hygiene', seg: 'hygiene', sub: 'Bin liners and refuse sacks, roll or flat.', price: 'AED 62 / carton', img: 'assets/bags.webp', img2: 'assets/bags-alt.webp' },
+    { key: 'freshener', name: 'Air Freshener', cat: 'Hygiene', seg: 'hygiene', sub: 'Aerosol and auto-dispenser fragrance ranges.', price: 'AED 18 / can', img: 'assets/freshener.webp', img2: 'assets/freshener-alt.webp' },
+    { key: 'cleaning', name: 'Cleaning Range', cat: 'Cleaning', seg: 'hygiene', sub: 'Detergents, sanitisers and the tools to use them.', price: 'AED 42 / 5 L', img: 'assets/cleaning.webp', img2: 'assets/cleaning-alt.webp' },
+    { key: 'stationery', name: 'Office Stationery', cat: 'Office', seg: 'office', sub: 'Pens, paper, files and everyday desk supplies.', price: 'AED 24 / box', img: 'assets/stationery.webp', img2: 'assets/stationery-alt.webp' },
+    { key: 'tea', name: 'Premium Tea Powder', cat: 'Pantry', seg: 'brand', sub: 'Strong, consistent blends in retail & catering packs.', price: 'AED 32 / kg', img: 'assets/tea.webp', img2: 'assets/tea-alt.webp' },
+    { key: 'tees', name: 'Corporate T-Shirts', cat: 'Branded', seg: 'brand', sub: 'Polo and round-neck, printed with your logo.', price: 'AED 34 / pc', img: 'assets/tees.webp', img2: 'assets/tees-alt.webp' },
+    { key: 'jacket', name: 'Jacket Logo Printing', cat: 'Branded', seg: 'brand', sub: 'Softshell jackets printed or embroidered with your logo.', price: 'AED 65 / pc', img: 'assets/jacket.webp', img2: 'assets/jacket-alt.webp' },
+    { key: 'cap', name: 'Cap Printing', cat: 'Branded', seg: 'brand', sub: 'Cotton caps printed with your design, any colour.', price: 'AED 18 / pc', img: 'assets/cap.webp', img2: 'assets/cap-alt.webp' },
+    { key: 'safetyshoe', name: 'Safety Shoe', cat: 'Safety', seg: 'safety', sub: 'Steel-toe safety boots for site and warehouse work.', price: 'AED 65 / pair', img: 'assets/safetyshoe.webp', img2: 'assets/safetyshoe-alt.webp' },
+    { key: 'helmet', name: 'Safety Helmet', cat: 'Safety', seg: 'safety', sub: 'Impact-rated hard hats with adjustable strap.', price: 'AED 38 / pc', img: 'assets/helmet.webp', img2: 'assets/helmet-alt.webp' },
+    { key: 'boilersuit', name: 'Boiler Safety Suit', cat: 'Safety', seg: 'safety', sub: 'Flame-resistant coveralls with reflective safety tape.', price: 'AED 85 / pc', img: 'assets/boilersuit.webp', img2: 'assets/boilersuit-alt.webp' },
+    { key: 'mug', name: 'Mug Printing', cat: 'Branded', seg: 'brand', sub: 'Ceramic mugs printed with your logo or design.', price: 'AED 15 / pc', img: 'assets/mug.webp', img2: 'assets/mug-alt.webp' },
+    { key: 'pen', name: 'Corporate Pen Printing', cat: 'Branded', seg: 'brand', sub: 'Metal-body pens engraved or printed with your brand.', price: 'AED 6 / pc', img: 'assets/pen.webp', img2: 'assets/pen-alt.webp' }
   ];
 
   const FAVOURITE_KEYS = ['cups', 'tissue', 'packaging', 'cleaning', 'tees'];
   const HERO_SLIDE_KEYS = ['cups', 'tissue', 'packaging', 'cleaning', 'tees', 'tea'];
   const SEGMENTS = [
     ['all', 'All products'], ['food', 'Foodservice'], ['hygiene', 'Hygiene & Cleaning'],
-    ['office', 'Office'], ['brand', 'Pantry & Branded']
+    ['office', 'Office'], ['safety', 'Safety & PPE'], ['brand', 'Pantry & Branded']
   ];
   const COVERAGE = ['Dubai', 'Sharjah', 'Ajman', 'Abu Dhabi', 'Umm Al Quwain', 'Ras Al Khaimah', 'Fujairah'];
-  const WHATSAPP_NUMBER = '971562017928';
-  const CONTACT_EMAIL = 'jirahhub@gmail.com';
+  const FAQ = [
+    { q: 'What areas does Jirah Hub deliver to?', a: 'All seven emirates of the UAE — next-day delivery to Dubai, Sharjah and Ajman, with scheduled runs to Abu Dhabi, Umm Al Quwain, Ras Al Khaimah and Fujairah.' },
+    { q: 'Do you sell wholesale and retail?', a: 'Both. Order by the carton for wholesale volume or by the pack for smaller retail orders — same fair pricing and reliable stock either way.' },
+    { q: 'How fast will I get a quote?', a: 'Usually the same day. Send your requirements through the quote form or WhatsApp and we’ll confirm pricing and a delivery window.' },
+    { q: 'What product categories do you carry?', a: 'Twelve categories: paper cups, paper plates, kraft food packaging, foil & cling film, disposables, tissue paper, garbage bags, air freshener, cleaning supplies, office stationery, premium tea powder, and branded corporate t-shirts.' },
+    { q: 'How do I place an order?', a: 'Call or WhatsApp us, or fill out the quote request form with what you need — we’ll reply with pricing and confirm the order and delivery window.' }
+  ];
+  // Both numbers work for Call and WhatsApp; the first is used as the
+  // default target when auto-redirecting after a form submission.
+  const PHONE_NUMBERS = [
+    { display: '+971 54 153 2561', digits: '971541532561' },
+    { display: '+971 55 326 2561', digits: '971553262561' }
+  ];
+  const WHATSAPP_NUMBER = PHONE_NUMBERS[0].digits;
+  const CONTACT_EMAIL = 'Sales@jirahhub.com';
   const PREFILL_KEY = 'jh_prefill';
 
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
@@ -73,7 +93,8 @@
     pin: '<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0116 0z"/><circle cx="12" cy="10" r="2.4"/></svg>',
     sprig: '<svg viewBox="0 0 60 70" width="60" height="70" fill="none" stroke="#7FA466" stroke-width="1.2" stroke-linecap="round"><path d="M42 4C30 20 22 42 20 66"/><path d="M38 14c-9-2-16 2-18 10 8 3 15-1 18-10z"/><path d="M33 28c-9-2-17 2-19 11 9 3 16-2 19-11z"/><path d="M28 43c-9-2-17 3-19 12 9 2 16-3 19-12z"/></svg>',
     leafBig: '<svg viewBox="0 0 70 80" width="66" height="76" fill="none" stroke="#8FBF74" stroke-width="1.1" stroke-linecap="round"><path d="M52 6C36 24 26 48 24 76"/><path d="M48 20c-11-3-20 2-23 12 10 4 19-2 23-12z"/><path d="M40 40c-11-3-21 3-24 14 11 3 20-3 24-14z"/></svg>',
-    paw: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-3.6 0-6-1.9-6-4.3 0-2 1.7-3.2 3-4.6C10.4 9.5 11 8 12 8s1.6 1.5 3 3.1c1.3 1.4 3 2.6 3 4.6 0 2.4-2.4 4.3-6 4.3z"/><circle cx="7" cy="7.5" r="1.8"/><circle cx="17" cy="7.5" r="1.8"/></svg>'
+    paw: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-3.6 0-6-1.9-6-4.3 0-2 1.7-3.2 3-4.6C10.4 9.5 11 8 12 8s1.6 1.5 3 3.1c1.3 1.4 3 2.6 3 4.6 0 2.4-2.4 4.3-6 4.3z"/><circle cx="7" cy="7.5" r="1.8"/><circle cx="17" cy="7.5" r="1.8"/></svg>',
+    sparkle: '<svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2c.6 4.2 2.4 7 6.5 7.7-4.1.7-5.9 3.5-6.5 7.7-.6-4.2-2.4-7-6.5-7.7 4.1-.7 5.9-3.5 6.5-7.7z"/></svg>'
   };
 
   function seal() {
@@ -101,10 +122,12 @@
   function toggleFav(key) {
     state.favs[key] = !state.favs[key];
     saveFavs();
+    const name = (CATALOG.find((p) => p.key === key) || {}).name || key;
     $$(`[data-fav="${key}"]`).forEach((btn) => {
       const active = !!state.favs[key];
       btn.classList.toggle('active', active);
       btn.setAttribute('aria-pressed', String(active));
+      btn.setAttribute('aria-label', (active ? 'Remove ' : 'Save ') + name + (active ? ' from your enquiry list' : ' to your enquiry list'));
       btn.innerHTML = active ? ICON.heartOn : ICON.heart;
       btn.classList.add('pop');
       setTimeout(() => btn.classList.remove('pop'), 350);
@@ -114,42 +137,71 @@
     if (badge) { badge.textContent = count; badge.classList.remove('pulse'); void badge.offsetWidth; badge.classList.add('pulse'); }
   }
 
-  function heartButton(key) {
+  function heartButton(key, name) {
     const active = !!state.favs[key];
-    return `<button class="heart-btn${active ? ' active' : ''}" data-fav="${key}" aria-label="Save ${esc(key)}" aria-pressed="${active}">${active ? ICON.heartOn : ICON.heart}</button>`;
+    const label = (active ? 'Remove ' : 'Save ') + (name || key) + (active ? ' from your enquiry list' : ' to your enquiry list');
+    return `<button class="heart-btn${active ? ' active' : ''}" data-fav="${key}" aria-label="${esc(label)}" aria-pressed="${active}">${active ? ICON.heartOn : ICON.heart}</button>`;
   }
 
   /* ---------------- Card templates ---------------- */
   function favouriteCard(p) {
     return `<article class="card reveal">
+      <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
       <div class="card-media">
         <img src="${p.img}" alt="${esc(p.name)}" loading="lazy">
-        ${heartButton(p.key)}
       </div>
+      </a>
+      ${heartButton(p.key, p.name)}
       <div class="card-body">
-        <span class="card-name">${esc(p.name)}</span>
+        <a href="category-${p.key}.html" class="card-name">${esc(p.name)}</a>
         <span class="card-cat">${esc(p.cat)}</span>
-        <span class="card-price">${esc(p.price)}</span>
+        <button class="quote-link" data-quote="${p.key}" style="margin-top:10px">Get a quote &rarr;</button>
       </div>
     </article>`;
   }
 
   function catalogueCard(p) {
     return `<article class="card reveal">
-      <div class="card-media ratio-43">
-        <img src="${p.img}" alt="${esc(p.name)}" loading="lazy">
-        ${heartButton(p.key)}
+      <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
+      <div class="card-media ratio-43 card-slides" data-slideshow>
+        <img class="card-slide-img active" src="${p.img}" alt="${esc(p.name)}" loading="lazy">
+        <img class="card-slide-img" src="${p.img2}" alt="${esc(p.name)} detail" loading="lazy">
+        <span class="card-slide-dots" aria-hidden="true"><i class="on"></i><i></i></span>
       </div>
+      </a>
+      ${heartButton(p.key, p.name)}
       <div class="card-body">
         <span class="card-tag">${esc(p.cat)}</span>
-        <span class="card-name" style="margin-top:4px">${esc(p.name)}</span>
+        <a href="category-${p.key}.html" class="card-name" style="margin-top:4px">${esc(p.name)}</a>
         <span class="card-sub">${esc(p.sub)}</span>
         <div class="card-foot">
-          <span class="card-price">${esc(p.price)}</span>
-          <button class="quote-link" data-quote="${p.key}">Get a quote &rarr;</button>
+          <button class="btn-outline btn" data-quote="${p.key}" style="padding:9px 20px;font-size:13.5px">Get a quote &rarr;</button>
         </div>
       </div>
     </article>`;
+  }
+
+  /* ---------------- Per-card auto slideshow (crossfades every ~1s) ---------------- */
+  let slideshowTimers = [];
+  function initCardSlideshows() {
+    slideshowTimers.forEach(clearInterval);
+    slideshowTimers = [];
+    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
+    $$('[data-slideshow]').forEach((host, idx) => {
+      const imgs = $$('.card-slide-img', host);
+      const dots = $$('.card-slide-dots i', host);
+      if (imgs.length < 2) return;
+      let i = 0;
+      const timer = setInterval(() => {
+        const next = (i + 1) % imgs.length;
+        imgs[i].classList.remove('active');
+        imgs[next].classList.add('active');
+        if (dots.length) { dots[i].classList.remove('on'); dots[next].classList.add('on'); }
+        i = next;
+      }, 1000 + (idx % 4) * 120);
+      slideshowTimers.push(timer);
+    });
   }
 
   /* ---------------- HOME page ---------------- */
@@ -209,7 +261,7 @@
           <p class="circle-lede">Contract pricing, early access to new stock, and monthly restock reminders for your account.</p>
           <div id="circle-slot"></div>
         </div>
-        <div class="circle-photo"><img src="assets/packaging.jpg" alt="Kraft packaging ready for delivery"></div>
+        <div class="circle-photo"><img src="assets/packaging.webp" alt="Kraft packaging ready for delivery"></div>
         <div class="circle-quote">
           <span class="circle-quote-mark">&ldquo;</span>
           <p class="circle-quote-text">Supply with purpose makes every order easier to place.</p>
@@ -247,24 +299,12 @@
             <p>We built it on one promise: quality products, trusted service, better value — with kinder materials wherever a greener option exists. One order, one invoice, one reliable delivery across all seven emirates.</p>
           </div>
         </div>
-        <div class="about-photo reveal"><img src="assets/tees.jpg" alt="Corporate branded apparel"></div>
-      </div>
-    </div>
-    <div class="wrap" style="padding-bottom:clamp(28px,4vw,48px)">
-      <div class="mission-grid">
-        ${mission.map((m, i) => `<div class="mission-card reveal"><span class="mission-no">0${i + 1}</span><h3>${esc(m.title)}</h3><p>${esc(m.body)}</p></div>`).join('')}
+        <div class="about-photo reveal about-photo-logo"><img src="assets/logo-full.webp" alt="Jirah Hub General Trading"></div>
       </div>
     </div>
     <div class="wrap" style="padding-bottom:clamp(48px,6vw,84px)">
-      <div class="partner-band reveal">
-        <div class="partner-id">
-          <div class="partner-avatar">JJ</div>
-          <div>
-            <span class="partner-role">Managing Partner</span>
-            <span class="partner-name">Jacob Joy Alexander</span>
-          </div>
-        </div>
-        <p class="partner-quote">&ldquo;The right product, a fair price, and it turns up when we said it would. That's the whole business.&rdquo;</p>
+      <div class="mission-grid">
+        ${mission.map((m, i) => `<div class="mission-card reveal"><span class="mission-no">0${i + 1}</span><h3>${esc(m.title)}</h3><p>${esc(m.body)}</p></div>`).join('')}
       </div>
     </div>`;
   }
@@ -289,11 +329,10 @@
       if (!email) return;
       state.joined = true;
       localStorage.setItem('jh_joined', '1');
-      const subject = encodeURIComponent('Join the Jirah Trade Circle');
-      const body = encodeURIComponent(`Please add me to the Jirah Trade Circle mailing list.\nEmail: ${email}`);
-      window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+      const msg = `Hi Jirah Hub, please add me to the Trade Circle.\nEmail: ${email}`;
       renderCircleSlot();
-      toast('Welcome to the Trade Circle — check your email client for the confirmation note.');
+      toast('Redirecting you to WhatsApp to confirm…');
+      setTimeout(() => { window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`; }, 500);
     });
   }
 
@@ -317,13 +356,34 @@
   /* ---------------- PRODUCTS page ---------------- */
   function renderShopShell() {
     return `
-    <div class="catalogue-hero wrap" id="shop">
-      <div class="catalogue-blob"></div>
-      <span class="eyebrow reveal">The catalogue</span>
-      <h1 class="catalogue-title reveal">Everyday essentials, kinder choices.</h1>
-      <p class="catalogue-lede reveal">Twelve consumable categories, wholesale or retail. Tap a product for pack sizes, then send it straight to a quote.</p>
-      <div class="seg-row" id="seg-row"></div>
-    </div>
+    <section class="shop-hero" id="shop">
+      <span class="shop-hero-dot sd-1"></span>
+      <span class="shop-hero-dot sd-2"></span>
+      <span class="shop-hero-sparkle sk-1">${ICON.sparkle}</span>
+      <span class="shop-hero-sparkle sk-2">${ICON.sparkle}</span>
+      <div class="shop-hero-wave-a"></div>
+      <div class="shop-hero-wave-b"></div>
+      <div class="wrap shop-hero-grid">
+        <div class="shop-hero-copy reveal">
+          <span class="shop-hero-brandline">${ICON.leaf} Jirah Hub Catalogue</span>
+          <h1 class="shop-hero-title"><span class="accent">Everyday</span><br>Essentials.</h1>
+          <span class="eyebrow" style="margin-top:14px">Wholesale &amp; retail &middot; Kinder choices</span>
+          <p class="shop-hero-lede">Everyday essentials, safety wear and branded goods in one account. Tap a product for details, then send it straight to a quote.</p>
+          <a href="contact.html" class="btn btn-primary" style="margin-top:26px">
+            <span>Get a Quote</span>
+            <span class="btn-arrow">${ICON.arrow}</span>
+          </a>
+        </div>
+        <div class="shop-hero-visual reveal">
+          <div class="shop-hero-photo-main"><img src="assets/cups.webp" alt="Paper cup range"></div>
+          <div class="shop-hero-photo-sub"><img src="assets/tea.webp" alt="Premium tea powder"></div>
+          <span class="shop-hero-leaf">${ICON.leafBig}</span>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="seg-row" id="seg-row"></div>
+      </div>
+    </section>
     <div class="section wrap" style="padding-top:clamp(14px,2vw,24px)">
       <div class="grid-fill" id="shop-grid"></div>
     </div>`;
@@ -344,15 +404,22 @@
       ? visible.map(catalogueCard).join('')
       : `<p style="grid-column:1/-1;color:var(--ink-faint);padding:20px 0">No products match &ldquo;${esc(state.search)}&rdquo;.</p>`;
     initReveal();
+    initCardSlideshows();
   }
 
   /* ---------------- CONTACT page ---------------- */
   function renderContactMarkup() {
     const contacts = [
-      { label: 'Call', value: '+971 55 942 1355', href: 'tel:+971559421355', icon: ICON.phone },
-      { label: 'WhatsApp', value: '+971 56 201 7928', href: 'https://wa.me/' + WHATSAPP_NUMBER, icon: ICON.chat },
-      { label: 'Email', value: CONTACT_EMAIL, href: 'mailto:' + CONTACT_EMAIL, icon: ICON.mail },
-      { label: 'Visit', value: 'Samnan, Sharjah, UAE', href: 'https://maps.google.com/?q=Samnan,Sharjah,UAE', icon: ICON.pin }
+      {
+        label: 'Call', icon: ICON.phone,
+        links: PHONE_NUMBERS.map((p) => ({ text: p.display, href: 'tel:+' + p.digits }))
+      },
+      {
+        label: 'WhatsApp', icon: ICON.chat,
+        links: PHONE_NUMBERS.map((p) => ({ text: p.display, href: 'https://wa.me/' + p.digits }))
+      },
+      { label: 'Email', icon: ICON.mail, links: [{ text: CONTACT_EMAIL, href: 'mailto:' + CONTACT_EMAIL }] },
+      { label: 'Visit', icon: ICON.pin, links: [{ text: 'Samnan, Sharjah, UAE', href: 'https://maps.google.com/?q=Samnan,Sharjah,UAE' }] }
     ];
     return `
     <div class="contact-hero wrap" id="contact">
@@ -365,10 +432,13 @@
         </div>
         <div class="reveal">
           <div class="contact-list">
-            ${contacts.map((c) => `<a href="${c.href}" ${c.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''}>
+            ${contacts.map((c) => `<div class="contact-row">
               <span class="contact-icon">${c.icon}</span>
-              <span><span class="contact-label">${esc(c.label)}</span><span class="contact-value">${esc(c.value)}</span></span>
-            </a>`).join('')}
+              <span>
+                <span class="contact-label">${esc(c.label)}</span>
+                <span class="contact-value-row">${c.links.map((l) => `<a href="${l.href}" ${l.href.startsWith('http') ? 'target="_blank" rel="noopener"' : ''} class="contact-value">${esc(l.text)}</a>`).join('')}</span>
+              </span>
+            </div>`).join('')}
           </div>
           <p class="contact-note">Serving all seven emirates &middot; Delivery available UAE-wide</p>
         </div>
@@ -382,7 +452,20 @@
           <p class="coverage-lede">Next-day drops across Dubai, Sharjah and Ajman; scheduled runs to Abu Dhabi, Umm Al Quwain, Ras Al Khaimah and Fujairah.</p>
           <div class="coverage-pills">${COVERAGE.map((e) => `<span class="coverage-pill">${esc(e)}</span>`).join('')}</div>
         </div>
-        <div class="map-holder"><uae-map></uae-map></div>
+        <div class="map-holder">
+          <uae-map></uae-map>
+          <div class="map-loading" id="map-loading"><span class="map-loading-spin"></span> Loading coverage map&hellip;</div>
+        </div>
+      </div>
+    </div>
+    <div class="wrap" style="padding-bottom:clamp(48px,6vw,84px)">
+      <span class="eyebrow reveal">Common questions</span>
+      <h2 class="section-title reveal" style="margin-top:12px">Frequently asked</h2>
+      <div class="faq-list">
+        ${FAQ.map((f) => `<div class="faq-item reveal">
+          <h3 class="faq-q">${esc(f.q)}</h3>
+          <p class="faq-a">${esc(f.a)}</p>
+        </div>`).join('')}
       </div>
     </div>`;
   }
@@ -393,24 +476,29 @@
       ? `<div class="sent-state">
           <span class="sent-check">${ICON.check}</span>
           <h3>Request received</h3>
-          <p>We'll send pricing and a delivery window &mdash; usually the same day.</p>
+          <p>Taking you to WhatsApp to confirm &mdash; we'll send pricing and a delivery window, usually the same day.</p>
           <button class="btn-outline" id="reset-form">Send another</button>
         </div>`
       : `<form id="quote-form" class="qform" novalidate>
           <label>Name
-            <input name="name" required autocomplete="name">
+            <input name="name" required autocomplete="name" aria-describedby="err-name">
+            <span class="field-error" id="err-name"></span>
           </label>
           <label>Company
             <input name="company" autocomplete="organization">
+            <span class="field-error"></span>
           </label>
           <label>Phone / WhatsApp
-            <input name="phone" required autocomplete="tel">
+            <input name="phone" required autocomplete="tel" aria-describedby="err-phone">
+            <span class="field-error" id="err-phone"></span>
           </label>
           <label>Email
-            <input name="email" type="email" autocomplete="email">
+            <input name="email" type="email" autocomplete="email" aria-describedby="err-email">
+            <span class="field-error" id="err-email"></span>
           </label>
           <label class="full">What do you need?
             <textarea name="message" placeholder="e.g. 20 cartons 8oz cups, 500 kraft boxes, monthly cleaning supplies…"></textarea>
+            <span class="field-error"></span>
           </label>
           <button type="submit" class="btn btn-primary submit">Send request</button>
         </form>`;
@@ -430,10 +518,31 @@
           history.replaceState(null, '', clean.pathname + clean.search + clean.hash);
         }
       }
+      const clearErrors = () => {
+        $$('.field-error', quoteForm).forEach((el) => { el.textContent = ''; });
+        $$('input, textarea', quoteForm).forEach((el) => el.classList.remove('invalid'));
+      };
+      const showError = (name, msg) => {
+        const field = quoteForm.querySelector(`[name="${name}"]`);
+        if (!field) return;
+        field.classList.add('invalid');
+        const err = document.getElementById('err-' + name);
+        if (err) err.textContent = msg;
+      };
+
       quoteForm.addEventListener('submit', (e) => {
         e.preventDefault();
+        clearErrors();
         const data = Object.fromEntries(new FormData(quoteForm).entries());
-        if (!data.name || !data.phone) return;
+        let firstInvalid = null;
+        if (!data.name || !data.name.trim()) { showError('name', 'Please enter your name.'); firstInvalid = firstInvalid || 'name'; }
+        if (!data.phone || !data.phone.trim()) { showError('phone', 'Please enter a phone or WhatsApp number.'); firstInvalid = firstInvalid || 'phone'; }
+        if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) { showError('email', 'That email address doesn\'t look right.'); firstInvalid = firstInvalid || 'email'; }
+        if (firstInvalid) {
+          quoteForm.querySelector(`[name="${firstInvalid}"]`).focus();
+          toast('Please fix the highlighted fields.');
+          return;
+        }
         const lines = [
           `Hi Jirah Hub, I'd like a quote.`,
           `Name: ${data.name}`,
@@ -442,10 +551,29 @@
           data.email ? `Email: ${data.email}` : '',
           data.message ? `Details: ${data.message}` : ''
         ].filter(Boolean).join('\n');
-        window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`, '_blank');
+
+        // Fire-and-forget: emails the request to Jirah Hub via FormSubmit
+        // (no signup needed; the first-ever submission triggers a one-time
+        // confirmation email FormSubmit sends to CONTACT_EMAIL).
+        fetch(`https://formsubmit.co/ajax/${encodeURIComponent(CONTACT_EMAIL)}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            _subject: `New quote request from ${data.name} — Jirah Hub website`,
+            Name: data.name,
+            Company: data.company || '—',
+            Phone: data.phone,
+            Email: data.email || '—',
+            Details: data.message || '—'
+          })
+        }).catch(() => {});
+
         state.sent = true;
         renderQuoteFormSlot();
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => {
+          window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines)}`;
+        }, 1400);
       });
     }
 
@@ -532,7 +660,7 @@
     const params = new URLSearchParams(location.search);
     const qParam = params.get('q');
 
-    if (page === 'products') {
+    if (page === 'products' && $('#shop-grid')) {
       if (qParam) { state.search = qParam; searchInput.value = qParam; }
       searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -558,8 +686,16 @@
       if (!count) { toast('Heart a product to add it to your enquiry list.'); return; }
       goToContactWithMessage(buildQuoteMessage());
     });
-    $('#nav-toggle').addEventListener('click', () => $('#nav-links').classList.toggle('open'));
-    $$('.nav-link').forEach((a) => a.addEventListener('click', () => $('#nav-links').classList.remove('open')));
+    const navToggle = $('#nav-toggle');
+    const navLinksEl = $('#nav-links');
+    navToggle.addEventListener('click', () => {
+      const open = navLinksEl.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+    $$('.nav-link').forEach((a) => a.addEventListener('click', () => {
+      navLinksEl.classList.remove('open');
+      navToggle.setAttribute('aria-expanded', 'false');
+    }));
     $('#year').textContent = new Date().getFullYear();
 
     const count = Object.values(state.favs).filter(Boolean).length;
@@ -572,25 +708,41 @@
     const page = document.body.dataset.page;
     const main = $('#app-main');
 
-    if (page === 'home') {
+    // Header/nav/search/cart/footer wiring — runs on every page, including
+    // static category detail pages that don't render into #app-main.
+    initChrome();
+    bindGlobalEvents();
+
+    if (page === 'home' && main) {
       main.innerHTML = renderHero() + renderStory();
-      initChrome();
-      bindGlobalEvents();
       renderFavouritesGrid();
       renderCircleSlot();
       initHeroCarousel();
-    } else if (page === 'products') {
+    } else if (page === 'products' && main) {
       main.innerHTML = renderShopShell();
-      initChrome();
-      bindGlobalEvents();
       renderSegRow();
       renderShopGrid();
-    } else if (page === 'contact') {
+    } else if (page === 'contact' && main) {
       main.innerHTML = renderContactMarkup();
-      initChrome();
-      bindGlobalEvents();
       renderQuoteFormSlot();
+      const mapLoading = $('#map-loading');
+      const mapEl = $('.map-holder uae-map');
+      if (mapLoading && mapEl) {
+        const hide = () => mapLoading.classList.add('hide');
+        mapEl.addEventListener('map-ready', hide, { once: true });
+        mapEl.addEventListener('map-error', hide, { once: true });
+      }
     }
+
+    // Product-detail pages ship their own static markup with a
+    // [data-quote] CTA and heart button already in the HTML — bindGlobalEvents()
+    // (delegated on document.body) picks those up automatically.
+    $$('[data-fav]').forEach((btn) => {
+      const active = !!state.favs[btn.dataset.fav];
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+      if (active) btn.innerHTML = ICON.heartOn;
+    });
 
     initReveal();
   });

@@ -9,16 +9,48 @@
 
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="canonical" href="index.html">
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Jirah Hub General Trading">
+<meta property="og:url" content="index.html">
+<meta property="og:site_name" content="Jirah Hub General Trading">
+<meta property="og:title" content="Jirah Hub General Trading — Quality Consumables, Delivered UAE-Wide">
 <meta property="og:description" content="Quality products, trusted service, better value. Wholesale &amp; retail consumables delivered across the UAE.">
-<meta property="og:image" content="assets/favicon-512.png">
+<meta property="og:image" content="assets/og-banner.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_AE">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Jirah Hub General Trading">
+<meta name="twitter:description" content="Quality products, trusted service, better value. Wholesale &amp; retail consumables delivered across the UAE.">
+<meta name="twitter:image" content="assets/og-banner.jpg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="assets/cups.webp" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=5">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Jirah Hub General Trading",
+  "description": "Sharjah-based wholesale and retail supplier of foodservice disposables, packaging, hygiene, cleaning, office and branded consumables, delivering across all seven emirates of the UAE.",
+  "url": "index.html",
+  "logo": "assets/logo-full.webp",
+  "image": "assets/og-banner.jpg",
+  "telephone": "+971541532561",
+  "email": "Sales@jirahhub.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Samnan, Sharjah",
+    "addressCountry": "AE"
+  },
+  "areaServed": ["Dubai", "Sharjah", "Ajman", "Abu Dhabi", "Umm Al Quwain", "Ras Al Khaimah", "Fujairah"],
+  "sameAs": ["https://wa.me/971541532561", "https://wa.me/971553262561"]
+}
+</script>
 </head>
 <body data-page="home">
 
@@ -27,7 +59,7 @@
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand">
-      <span class="brand-mark"><img src="assets/logo-mark.png" alt="" width="40" height="40"></span>
+      <span class="brand-mark"><img src="assets/logo-full.webp" alt="" width="40" height="40"></span>
       <span class="brand-text">
         <span class="brand-name">jirah <span>hub</span></span>
         <span class="brand-sub">Quality &middot; Trusted &middot; Value</span>
@@ -41,7 +73,7 @@
       <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
     </div>
 
-    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
       <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
     </button>
 
@@ -63,8 +95,9 @@
   <div class="wrap footer-row">
     <span class="footer-brand">jirah <span>hub</span><small>General Trading</small></span>
     <div class="footer-links">
-      <a href="tel:+971559421355">+971 55 942 1355</a>
-      <a href="mailto:jirahhub@gmail.com">jirahhub@gmail.com</a>
+      <a href="tel:+971541532561">+971 54 153 2561</a>
+      <a href="tel:+971553262561">+971 55 326 2561</a>
+      <a href="mailto:Sales@jirahhub.com">Sales@jirahhub.com</a>
       <span>Samnan, Sharjah &middot; Serving all seven emirates</span>
     </div>
   </div>
@@ -78,6 +111,6 @@
 <script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
 <script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
 <script src="uae-map.js"></script>
-<script src="app.js?v=4"></script>
+<script src="app.js?v=9"></script>
 </body>
 </html>
