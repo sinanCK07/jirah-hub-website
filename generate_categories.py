@@ -288,22 +288,22 @@ def page(cat, idx):
 <meta name="description" content="{e(cat['lede'][:155])}">
 <meta name="theme-color" content="#0F2E5C">
 
-<link rel="icon" href="assets/favicon-32.webp" sizes="32x32">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.webp">
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="canonical" href="category-{key}.html">
+<link rel="canonical" href="https://jirahhub.com/category-{key}.html">
 
 <meta property="og:type" content="product">
-<meta property="og:url" content="category-{key}.html">
+<meta property="og:url" content="https://jirahhub.com/category-{key}.html">
 <meta property="og:site_name" content="Jirah Hub General Trading">
 <meta property="og:title" content="{e(cat['name'])} — Jirah Hub General Trading">
 <meta property="og:description" content="{e(cat['lede'][:155])}">
-<meta property="og:image" content="{cat['img']}">
+<meta property="og:image" content="https://jirahhub.com/{cat['img']}">
 <meta property="og:locale" content="en_AE">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{e(cat['name'])} — Jirah Hub General Trading">
 <meta name="twitter:description" content="{e(cat['lede'][:155])}">
-<meta name="twitter:image" content="{cat['img']}">
+<meta name="twitter:image" content="https://jirahhub.com/{cat['img']}">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -316,7 +316,7 @@ def page(cat, idx):
   "name": "{e(cat['name'])}",
   "category": "{e(cat['cat'])}",
   "description": "{e(cat['lede'])}",
-  "image": "{cat['img']}",
+  "image": "https://jirahhub.com/{cat['img']}",
   "brand": {{ "@type": "Brand", "name": "Jirah Hub General Trading" }}
 }}
 </script>
