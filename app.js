@@ -156,14 +156,14 @@
   /* ---------------- Card templates ---------------- */
   function favouriteCard(p) {
     return `<article class="card reveal">
-      <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
+      <a href="/category-${p.key}" aria-label="View details for ${esc(p.name)}">
       <div class="card-media">
         <img src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
       </div>
       </a>
       ${heartButton(p.key, p.name)}
       <div class="card-body">
-        <a href="category-${p.key}.html" class="card-name">${esc(p.name)}</a>
+        <a href="/category-${p.key}" class="card-name">${esc(p.name)}</a>
         <span class="card-cat">${esc(p.cat)}</span>
         <button class="quote-link" data-quote="${p.key}" style="margin-top:10px">Get a quote &rarr;</button>
       </div>
@@ -172,7 +172,7 @@
 
   function catalogueCard(p) {
     return `<article class="card reveal">
-      <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
+      <a href="/category-${p.key}" aria-label="View details for ${esc(p.name)}">
       <div class="card-media ratio-43">
         <img src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
       </div>
@@ -180,7 +180,7 @@
       ${heartButton(p.key, p.name)}
       <div class="card-body">
         <span class="card-tag">${esc(p.cat)}</span>
-        <a href="category-${p.key}.html" class="card-name" style="margin-top:4px">${esc(p.name)}</a>
+        <a href="/category-${p.key}" class="card-name" style="margin-top:4px">${esc(p.name)}</a>
         <span class="card-sub">${esc(p.sub)}</span>
         <div class="card-foot">
           <button class="btn-outline btn" data-quote="${p.key}" style="padding:9px 20px;font-size:13.5px">Get a quote &rarr;</button>
@@ -216,7 +216,7 @@
             <span class="hero-leaf">${ICON.leafBig}</span>
           </h1>
           <p class="hero-lede">Eco-conscious consumables for the businesses of the UAE.</p>
-          <a href="products.html" class="btn btn-primary" style="margin-top:34px">
+          <a href="/products" class="btn btn-primary" style="margin-top:34px">
             <span>Shop the Collection</span>
             <span class="btn-arrow">${ICON.arrow}</span>
           </a>
@@ -245,7 +245,7 @@
     <section class="section wrap">
       <div class="section-head">
         <h2 class="section-title reveal">Shop Our Favourites</h2>
-        <a href="products.html" class="section-link">View all products ${ICON.chevron}</a>
+        <a href="/products" class="section-link">View all products ${ICON.chevron}</a>
       </div>
       <div class="grid-5" id="favourites-grid"></div>
     </section>
@@ -391,7 +391,7 @@
           <h1 class="shop-hero-title"><span class="accent">Everyday</span><br>Essentials.</h1>
           <span class="eyebrow" style="margin-top:14px">Wholesale &amp; retail &middot; Kinder choices</span>
           <p class="shop-hero-lede">Everyday essentials, safety wear and branded goods in one account. Tap a product for details, then send it straight to a quote.</p>
-          <a href="contact.html" class="btn btn-primary" style="margin-top:26px">
+          <a href="/contact" class="btn btn-primary" style="margin-top:26px">
             <span>Get a Quote</span>
             <span class="btn-arrow">${ICON.arrow}</span>
           </a>
@@ -637,7 +637,7 @@
       return;
     }
     if (msg) sessionStorage.setItem(PREFILL_KEY, msg); else sessionStorage.removeItem(PREFILL_KEY);
-    window.location.href = 'contact.html' + (msg ? '?msg=' + encodeURIComponent(msg) : '');
+    window.location.href = '/contact' + (msg ? '?msg=' + encodeURIComponent(msg) : '');
   }
 
   /* ---------------- Global event delegation ---------------- */
@@ -698,7 +698,7 @@
       searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const v = searchInput.value.trim();
-        window.location.href = 'products.html' + (v ? '?q=' + encodeURIComponent(v) : '');
+        window.location.href = '/products' + (v ? '?q=' + encodeURIComponent(v) : '');
       });
     }
 

@@ -2,7 +2,7 @@
   "name": "Jirah Hub General Trading",
   "short_name": "Jirah Hub",
   "description": "Quality products, trusted service, better value — wholesale & retail consumables delivered across the UAE.",
-  "start_url": "index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#F5F7FA",
   "theme_color": "#0F2E5C",

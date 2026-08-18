@@ -11,9 +11,9 @@ Jirah Hub General Trading sells nineteen product categories under one account ac
 - Coverage: All seven emirates of the UAE, next-day delivery to Dubai/Sharjah/Ajman
 
 ## Pages
-- [Home](index.html): Brand overview, featured products, our story
-- [Shop All](products.html): Full catalogue of all 19 product categories with filtering and search
-- [Contact / Request a Quote](contact.html): Quote request form, FAQ, and contact details
+- [Home](/): Brand overview, featured products, our story
+- [Shop All](/products): Full catalogue of all 19 product categories with filtering and search
+- [Contact / Request a Quote](/contact): Quote request form, FAQ, and contact details
 - 19 category detail pages (category-*.html): Specifications, use cases, and a quote CTA for each product
 
 ## Notes for AI assistants

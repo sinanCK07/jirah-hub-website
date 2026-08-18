@@ -332,7 +332,7 @@ def page(cat, idx):
 
 <header class="site-header">
   <nav class="nav">
-    <a href="index.html" class="brand">
+    <a href="/" class="brand">
       <span class="brand-mark"><img src="assets/logo-64.webp" alt="" width="40" height="40"></span>
       <span class="brand-text">
         <span class="brand-name">jirah <span>hub</span></span>
@@ -341,10 +341,10 @@ def page(cat, idx):
     </a>
 
     <div class="nav-links" id="nav-links">
-      <a href="index.html" class="nav-link" data-page="home">Home</a>
-      <a href="products.html" class="nav-link" data-page="products" aria-current="page">Shop All</a>
-      <a href="index.html#story" class="nav-link" data-page="story">Our Story</a>
-      <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+      <a href="/" class="nav-link" data-page="home">Home</a>
+      <a href="/products" class="nav-link" data-page="products" aria-current="page">Shop All</a>
+      <a href="/#story" class="nav-link" data-page="story">Our Story</a>
+      <a href="/contact" class="nav-link" data-page="contact">Contact</a>
     </div>
 
     <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
@@ -372,8 +372,8 @@ def page(cat, idx):
 <main id="main">
   <div class="wrap">
     <p class="breadcrumb">
-      <a href="index.html">Home</a> &rsaquo;
-      <a href="products.html">Shop All</a> &rsaquo;
+      <a href="/">Home</a> &rsaquo;
+      <a href="/products">Shop All</a> &rsaquo;
       <span class="current">{e(cat["name"])}</span>
     </p>
   </div>
@@ -389,7 +389,7 @@ def page(cat, idx):
             <span>Get a quote</span>
             <span class="btn-arrow">{ICON_ARROW}</span>
           </button>
-          <a href="products.html" class="btn-outline btn">Back to full catalogue</a>
+          <a href="/products" class="btn-outline btn">Back to full catalogue</a>
         </div>
       </div>
       <div class="cat-hero-media reveal">
@@ -454,7 +454,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=10"></script>
+<script src="app.js?v=11"></script>
 </body>
 </html>
 '''
