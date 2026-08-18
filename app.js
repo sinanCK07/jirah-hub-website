@@ -142,9 +142,22 @@
       btn.classList.add('pop');
       setTimeout(() => btn.classList.remove('pop'), 350);
     });
+    const badge = $('#cart-badge');
+    if (badge) { badge.classList.remove('pulse'); void badge.offsetWidth; badge.classList.add('pulse'); }
+    setCartCount();
+  }
+
+  // The badge digit is visible text inside #cart-btn, so WCAG 2.5.3
+  // ("Label in Name") requires the button's accessible name to contain it —
+  // a plain "View enquiry list" label fails, because someone driving the page
+  // by voice reads "0" but the name never mentions it. Keep the count in the
+  // label instead of hiding the badge from assistive tech, so it's announced.
+  function setCartCount() {
     const count = Object.values(state.favs).filter(Boolean).length;
     const badge = $('#cart-badge');
-    if (badge) { badge.textContent = count; badge.classList.remove('pulse'); void badge.offsetWidth; badge.classList.add('pulse'); }
+    if (badge) badge.textContent = count;
+    const btn = $('#cart-btn');
+    if (btn) btn.setAttribute('aria-label', `View enquiry list, ${count} ${count === 1 ? 'item' : 'items'}`);
   }
 
   function heartButton(key, name) {
@@ -681,7 +694,13 @@
     const params = new URLSearchParams(location.search);
     const qParam = params.get('q');
 
-    if (page === 'products' && $('#shop-grid')) {
+    // Guard on the page only, never on #shop-grid: initChrome() runs before
+    // boot renders the shop shell, so the grid doesn't exist yet and testing
+    // for it here silently skipped the whole branch — ?q= was dropped and the
+    // search box came up empty when arriving from another page. The form and
+    // input themselves live in the static header, so they're always present,
+    // and state.search set here is picked up by the renderShopGrid() below.
+    if (page === 'products') {
       if (qParam) { state.search = qParam; searchInput.value = qParam; }
       searchForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -719,9 +738,7 @@
     }));
     $('#year').textContent = new Date().getFullYear();
 
-    const count = Object.values(state.favs).filter(Boolean).length;
-    const badge = $('#cart-badge');
-    if (badge) badge.textContent = count;
+    setCartCount();
   }
 
   /* ---------------- Boot ---------------- */
