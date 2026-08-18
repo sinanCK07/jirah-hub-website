@@ -472,18 +472,25 @@ a.card-name:hover { color: var(--leaf); }
 .about-copy p:first-of-type { margin-top: 20px; }
 .about-photo { position: relative; aspect-ratio: 1; border-radius: 999px; overflow: hidden; background: transparent; }
 .about-photo img { width: 100%; height: 100%; object-fit: contain; background: transparent; }
-/* Percentage padding, not a clamp() in pixels: the plate is a circle
-   (border-radius:999px + overflow:hidden) but the logo is a square image,
-   so the amount of inset needed to keep the artwork inside the circle
-   scales with the plate. The artwork fills 843x757 of its 900x900 canvas,
-   giving it a half-diagonal of ~0.63x its rendered side, which needs at
-   least ~10.3% padding to clear the circle. The old clamp() happened to
-   land just above that on desktop (56px on a ~500px plate) but bottomed
-   out at 20px on a 375px phone — 5.3% — which clipped both ends of the
-   "QUALITY - TRUST - SERVICE" line. 12% clears it at every width. */
+/* The logo is a square image on a round plate, so two things keep it whole.
+
+   Percentage padding, not a clamp() in pixels: the inset needed to keep the
+   artwork inside the circle scales with the plate. The old clamp() landed
+   just above the threshold on desktop (56px on a ~500px plate) but bottomed
+   out at 20px on a 375px phone, which shaved the ends off the
+   "QUALITY - TRUST - SERVICE" line.
+
+   overflow: visible is the belt to that braces. The circular clip inherited
+   from .about-photo exists to crop rectangular product photography; this
+   logo already carries its own transparent corners (verified: alpha 0 at
+   all four), so the round white plate comes from this rule's background and
+   the clip only ever risks cropping the artwork. Turning it off means no
+   combination of viewport, padding or future logo art can crop the mark —
+   it renders identically today, with ~39px of clearance at 448px wide. */
 .about-photo-logo {
   background: var(--paper); border: 1px solid var(--line-soft);
   box-shadow: var(--shadow-lift); padding: 12%;
+  overflow: visible;
 }
 .about-photo-logo img { object-fit: contain; }
 
