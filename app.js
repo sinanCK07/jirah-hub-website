@@ -213,11 +213,18 @@
     const heroSizes = '(max-width: 760px) 85vw, (max-width: 1240px) 46vw, 480px';
     const slidesHtml = slides.map((p, i) =>
       // Slide 0 is the LCP candidate — load it eagerly at high priority.
-      // The rest crossfade in over the following seconds, so they can
-      // afford to be deprioritized instead of competing for bandwidth.
+      //
+      // The rest carry their URLs in data-* and are hydrated by
+      // initHeroCarousel() once the page has loaded. loading="lazy" did NOT
+      // defer them: every slide is stacked absolutely inside the hero box,
+      // so they all sit in the viewport and the browser fetched them
+      // immediately. Lighthouse caught four 960w hero photos (~270 KiB)
+      // downloading during the initial load on a phone, competing with the
+      // one image that actually decides LCP — and none of them are visible
+      // until the carousel starts crossfading 3.5s in.
       i === 0
         ? `<img class="hero-carousel-img active" src="${p.img}" ${heroSrcset(p.img, heroSizes)} alt="${esc(p.name)}" fetchpriority="high">`
-        : `<img class="hero-carousel-img" src="${p.img}" ${heroSrcset(p.img, heroSizes)} alt="${esc(p.name)}" loading="lazy">`
+        : `<img class="hero-carousel-img" data-src="${p.img}" data-srcset="${thumb(p.img)} 360w, ${p.img} 480w, ${wide(p.img)} 960w" data-sizes="${heroSizes}" alt="${esc(p.name)}">`
     ).join('');
     return `
     <section class="hero wrap" id="home">
@@ -362,16 +369,39 @@
   }
 
   /* ---------------- Hero image carousel (crossfade every 1s) ---------------- */
+  // Slides 1+ ship with their URLs in data-* so they don't compete with the
+  // LCP image for bandwidth (see renderHero). Copying the values onto the
+  // real attributes is what actually starts the fetch.
+  function hydrateSlide(img) {
+    if (!img || !img.dataset.src) return;
+    img.srcset = img.dataset.srcset;
+    img.sizes = img.dataset.sizes;
+    img.src = img.dataset.src;
+    delete img.dataset.src;
+  }
+
   function initHeroCarousel() {
     const host = $('#hero-carousel');
     if (!host) return;
     const imgs = $$('.hero-carousel-img', host);
     if (imgs.length < 2) return;
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Reduced motion means the carousel never advances, so the deferred
+    // slides would only ever be dead weight — leave them unhydrated.
     if (reduceMotion) return;
+
+    // Pull the rest in once the page has finished loading, so they use idle
+    // bandwidth rather than the critical window.
+    const hydrateRest = () => imgs.slice(1).forEach(hydrateSlide);
+    if (document.readyState === 'complete') hydrateRest();
+    else window.addEventListener('load', hydrateRest, { once: true });
+
     let i = 0;
     const advance = () => {
       const next = (i + 1) % imgs.length;
+      // Defensive: if load fired late, make sure the slide we're about to
+      // show has actually been told to fetch before it becomes visible.
+      hydrateSlide(imgs[next]);
       imgs[i].classList.remove('active');
       imgs[next].classList.add('active');
       i = next;

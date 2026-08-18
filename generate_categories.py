@@ -454,7 +454,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=12"></script>
+<script src="app.js?v=13"></script>
 </body>
 </html>
 '''
