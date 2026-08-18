@@ -211,7 +211,7 @@
       <div class="hero-blob-a"></div>
       <div class="hero-blob-b"></div>
       <div class="hero-grid">
-        <div class="hero-copy reveal">
+        <div class="hero-copy">
           <h1 class="hero-title">Better choices.<br>Beautiful supply.
             <span class="hero-leaf">${ICON.leafBig}</span>
           </h1>
@@ -226,7 +226,7 @@
             <span class="trust-item">${ICON.award} Premium Quality</span>
           </div>
         </div>
-        <div class="hero-visual reveal">
+        <div class="hero-visual">
           <div class="hero-photo" id="hero-carousel">${slidesHtml}</div>
           <div class="hero-seal">${seal()}</div>
         </div>
@@ -295,7 +295,10 @@
             <p>We built it on one promise: quality products, trusted service, better value — with kinder materials wherever a greener option exists. One order, one invoice, one reliable delivery across all seven emirates.</p>
           </div>
         </div>
-        <div class="about-photo reveal about-photo-logo"><img src="assets/logo-full.webp" ${heroSrcset('assets/logo-full.webp', '(max-width: 700px) 90vw, 450px')} alt="Jirah Hub General Trading" loading="lazy" decoding="async"></div>
+        <!-- Pinned to the 960w cut rather than a srcset: this is the brand
+             logo and the smaller tiers render visibly soft. It sits below
+             the fold and loads lazily, so it costs nothing on LCP. -->
+        <div class="about-photo reveal about-photo-logo"><img src="assets/logo-full-960.webp" alt="Jirah Hub General Trading" loading="lazy" decoding="async"></div>
       </div>
     </div>
     <div class="wrap" style="padding-bottom:clamp(48px,6vw,84px)">
@@ -305,19 +308,26 @@
     </div>`;
   }
 
-  function renderFavouritesGrid() {
-    const favourites = FAVOURITE_KEYS.map((k) => CATALOG.find((p) => p.key === k));
-    $('#favourites-grid').innerHTML = favourites.map(favouriteCard).join('');
+  // Markup builders are kept separate from the DOM writes so prerender_home.js
+  // can generate the same HTML at build time without a DOM.
+  function favouritesGridHtml() {
+    return FAVOURITE_KEYS.map((k) => CATALOG.find((p) => p.key === k)).filter(Boolean).map(favouriteCard).join('');
   }
 
-  function renderCircleSlot() {
-    const slot = $('#circle-slot');
-    slot.innerHTML = state.joined
+  function renderFavouritesGrid() {
+    $('#favourites-grid').innerHTML = favouritesGridHtml();
+  }
+
+  function circleSlotHtml() {
+    return state.joined
       ? `<span class="circle-joined">Welcome in &mdash; price list on its way &#10003;</span>`
       : `<form id="circle-form" class="circle-form">
           <input type="email" id="circle-email" required placeholder="Enter your email" aria-label="Email address">
           <button type="submit">Join Now</button>
         </form>`;
+  }
+
+  function bindCircleForm() {
     const circleForm = $('#circle-form');
     if (circleForm) circleForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -330,6 +340,12 @@
       toast('Redirecting you to WhatsApp to confirm…');
       setTimeout(() => { window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`; }, 500);
     });
+  }
+
+  function renderCircleSlot() {
+    const slot = $('#circle-slot');
+    if (slot) slot.innerHTML = circleSlotHtml();
+    bindCircleForm();
   }
 
   /* ---------------- Hero image carousel (crossfade every 1s) ---------------- */
@@ -710,14 +726,20 @@
 
   /* ---------------- Boot ---------------- */
   // Run synchronously instead of waiting for DOMContentLoaded: this script
-  // is the last thing before </body>, so the DOM — including the empty
-  // #app-main and the footer sitting right under it — is already fully
-  // parsed by the time we get here. Waiting for the event queues the render
-  // as a separate task and gives the browser a chance to paint that empty
-  // shell first (header, blank main, footer right underneath), which is
-  // exactly the footer layout shift Lighthouse keeps flagging once content
-  // pops in a moment later. Running inline means #app-main is populated
-  // before the parser even finishes, so there's nothing empty to paint.
+  // is the last thing before </body>, so the DOM is already fully parsed by
+  // the time we get here and waiting for the event would only queue the
+  // render as a separate task.
+  //
+  // Running inline still isn't enough on its own for the home page: the
+  // browser paints whatever it has parsed while it's still downloading this
+  // 46 KB file, so on a slow connection it paints the header, an empty
+  // #app-main and the footer directly beneath it — then the footer slams
+  // down once we populate main. Lighthouse measured that as the *entire*
+  // CLS (0.276, attributed 100% to <footer class="site-footer">), and the
+  // same JS dependency delayed the hero image by 850 ms of "element render
+  // delay" on LCP. index.html therefore ships the home markup prerendered
+  // (see prerender_home.js) so both land in their final position on the
+  // first paint; we only fall back to rendering it here if it's missing.
   (function boot() {
     const page = document.body.dataset.page;
     const main = $('#app-main');
@@ -728,9 +750,14 @@
     bindGlobalEvents();
 
     if (page === 'home' && main) {
-      main.innerHTML = renderHero() + renderStory();
-      renderFavouritesGrid();
-      renderCircleSlot();
+      if (main.firstElementChild) {
+        // Prerendered: the markup is already correct, so only wire behaviour.
+        bindCircleForm();
+      } else {
+        main.innerHTML = renderHero() + renderStory();
+        renderFavouritesGrid();
+        renderCircleSlot();
+      }
       initHeroCarousel();
     } else if (page === 'products' && main) {
       main.innerHTML = renderShopShell();
