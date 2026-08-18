@@ -402,6 +402,11 @@
       // Defensive: if load fired late, make sure the slide we're about to
       // show has actually been told to fetch before it becomes visible.
       hydrateSlide(imgs[next]);
+      // Deferring the slides means they may still be in flight when the
+      // carousel first ticks on a slow connection. Crossfading to one that
+      // hasn't decoded would flash an empty frame — something the old
+      // eager loading hid — so hold the current slide and retry next tick.
+      if (!imgs[next].complete || !imgs[next].naturalWidth) return;
       imgs[i].classList.remove('active');
       imgs[next].classList.add('active');
       i = next;
