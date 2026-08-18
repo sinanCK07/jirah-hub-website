@@ -40,17 +40,29 @@ QUALITY = 58
 ALPHA_QUALITY = 58
 METHOD = 6
 
-# The logo doubles as the 40x40 brand mark in the header on every page;
-# it gets its own tiny variant instead of the shared -360 one.
-EXTRA = {'logo-full.webp': [('logo-64.webp', 64)]}
+# The logo doubles as the 40x40 brand mark in the header on every page, so it
+# gets its own tiny variants instead of the shared -360 one. A 40px box is 80
+# physical pixels on a 2x phone and 120 on a 3x one, and a single 64px file
+# was being upscaled on both — hence a small density set.
+#
+# These encode far above the shared QUALITY too. 58 is tuned for photographs;
+# on a logo this small it smears the fine type and fringes the outlines, and
+# the whole set still costs only a few KB.
+EXTRA = {'logo-full.webp': [('logo-64.webp', 64), ('logo-80.webp', 80), ('logo-120.webp', 120)]}
+EXTRA_QUALITY = 92
+EXTRA_ALPHA_QUALITY = 100
 
 
-def encode(im, cap, dest):
+def encode(im, cap, dest, quality=None, alpha_quality=None):
     longest = max(im.width, im.height)
     if cap < longest:
         scale = cap / longest
         im = im.resize((round(im.width * scale), round(im.height * scale)), Image.LANCZOS)
-    im.save(dest, 'WEBP', quality=QUALITY, method=METHOD, alpha_quality=ALPHA_QUALITY)
+    im.save(
+        dest, 'WEBP', method=METHOD,
+        quality=QUALITY if quality is None else quality,
+        alpha_quality=ALPHA_QUALITY if alpha_quality is None else alpha_quality,
+    )
     return os.path.getsize(dest)
 
 
@@ -69,7 +81,8 @@ def main():
         after += encode(im, MEDIUM, os.path.join(OUT, name))
         after += encode(im, LARGE, os.path.join(OUT, name[:-5] + '-960.webp'))
         for extra_name, extra_cap in EXTRA.get(name, []):
-            after += encode(im, extra_cap, os.path.join(OUT, extra_name))
+            after += encode(im, extra_cap, os.path.join(OUT, extra_name),
+                            EXTRA_QUALITY, EXTRA_ALPHA_QUALITY)
         print(f'  {name}')
 
     print(f'\n{before / 1024:.0f} KiB source -> {after / 1024:.0f} KiB generated')
