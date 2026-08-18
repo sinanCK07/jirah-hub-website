@@ -439,7 +439,12 @@ a.card-name:hover { color: var(--leaf); }
 }
 
 /* ================= ABOUT PAGE ================= */
-.about-hero { position: relative; padding: clamp(30px,4vw,56px) 0 clamp(28px,4vw,52px); overflow: hidden; }
+/* The horizontal padding has to stay var(--pad): this element is also a
+   .wrap, and a three-value shorthand here would reset the side gutters to
+   0 and let the section run edge-to-edge while every other section stays
+   inset. The blob still bleeds past the gutter — it's absolutely
+   positioned and overflow clips at the padding box, not the content box. */
+.about-hero { position: relative; padding: clamp(30px,4vw,56px) var(--pad) clamp(28px,4vw,52px); overflow: hidden; }
 /* top+bottom, not top+height — see .hero-blob-a comment. The old top:8%/
    height:78% also undershot on desktop whenever the photo column (which
    sets .about-grid's height) was taller than the vertically-centered text
@@ -451,9 +456,18 @@ a.card-name:hover { color: var(--leaf); }
 .about-copy p:first-of-type { margin-top: 20px; }
 .about-photo { position: relative; aspect-ratio: 1; border-radius: 999px; overflow: hidden; background: transparent; }
 .about-photo img { width: 100%; height: 100%; object-fit: contain; background: transparent; }
+/* Percentage padding, not a clamp() in pixels: the plate is a circle
+   (border-radius:999px + overflow:hidden) but the logo is a square image,
+   so the amount of inset needed to keep the artwork inside the circle
+   scales with the plate. The artwork fills 843x757 of its 900x900 canvas,
+   giving it a half-diagonal of ~0.63x its rendered side, which needs at
+   least ~10.3% padding to clear the circle. The old clamp() happened to
+   land just above that on desktop (56px on a ~500px plate) but bottomed
+   out at 20px on a 375px phone — 5.3% — which clipped both ends of the
+   "QUALITY - TRUST - SERVICE" line. 12% clears it at every width. */
 .about-photo-logo {
   background: var(--paper); border: 1px solid var(--line-soft);
-  box-shadow: var(--shadow-lift); padding: clamp(20px,5vw,56px);
+  box-shadow: var(--shadow-lift); padding: 12%;
 }
 .about-photo-logo img { object-fit: contain; }
 
