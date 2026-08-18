@@ -1,6 +1,11 @@
 .wrangler/
 node_modules/
 
+# Pre-optimization webp originals, kept locally so optimize_images.py can be
+# re-run if the compression settings need adjusting. Not needed on the live
+# site — assets/ has the generated large + -360 variants that ship instead.
+assets-src/
+
 # Raw uploaded source images — large originals, not used directly by the
 # live site (processed .webp versions in assets/ are what's referenced).
 # Kept locally for re-processing later; not tracked in the repo.

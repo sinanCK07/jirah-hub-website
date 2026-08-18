@@ -305,9 +305,9 @@ def page(cat, idx):
 <meta name="twitter:description" content="{e(cat['lede'][:155])}">
 <meta name="twitter:image" content="https://jirahhub.com/{cat['img']}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-var-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-serif-display-400-latin.woff2" crossorigin>
+<link rel="preload" as="image" href="{cat['img']}" fetchpriority="high">
 <link rel="stylesheet" href="styles.css?v=5">
 <script type="application/ld+json">
 {{
@@ -328,7 +328,7 @@ def page(cat, idx):
 <header class="site-header">
   <nav class="nav">
     <a href="index.html" class="brand">
-      <span class="brand-mark"><img src="assets/logo-full.webp" alt="" width="40" height="40"></span>
+      <span class="brand-mark"><img src="assets/logo-64.webp" alt="" width="40" height="40"></span>
       <span class="brand-text">
         <span class="brand-name">jirah <span>hub</span></span>
         <span class="brand-sub">Quality &middot; Trusted &middot; Value</span>
@@ -388,7 +388,7 @@ def page(cat, idx):
         </div>
       </div>
       <div class="cat-hero-media reveal">
-        <img src="{cat['img']}" alt="{e(cat['name'])}">
+        <img src="{cat['img']}" alt="{e(cat['name'])}" fetchpriority="high">
       </div>
     </div>
   </section>
@@ -442,7 +442,7 @@ def page(cat, idx):
       <span>Samnan, Sharjah &middot; Serving all seven emirates</span>
     </div>
   </div>
-  <div class="wrap" style="padding-bottom:18px;font-size:12px;color:rgba(255,255,255,.5)">
+  <div class="wrap" style="padding-bottom:18px;font-size:12px;color:rgba(255,255,255,.65)">
     &copy; <span id="year"></span> Jirah Hub General Trading. All rights reserved.
   </div>
 </footer>

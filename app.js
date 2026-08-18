@@ -57,6 +57,11 @@
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  // Product photography ships two sizes: the plain filename (720px cap, used
+  // for hero/detail shots) and a `-360` variant for the small card grid —
+  // grid cards never render wider than ~235px, so the full-size asset is
+  // 2-3x more data than the display ever needs.
+  const thumb = (img) => img.replace(/\.webp$/, '-360.webp');
 
   /* ---------------- State ---------------- */
   const state = {
@@ -148,7 +153,7 @@
     return `<article class="card reveal">
       <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
       <div class="card-media">
-        <img src="${p.img}" alt="${esc(p.name)}" loading="lazy">
+        <img src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
       </div>
       </a>
       ${heartButton(p.key, p.name)}
@@ -164,8 +169,8 @@
     return `<article class="card reveal">
       <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
       <div class="card-media ratio-43 card-slides" data-slideshow>
-        <img class="card-slide-img active" src="${p.img}" alt="${esc(p.name)}" loading="lazy">
-        <img class="card-slide-img" src="${p.img2}" alt="${esc(p.name)} detail" loading="lazy">
+        <img class="card-slide-img active" src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
+        <img class="card-slide-img" src="${thumb(p.img2)}" alt="${esc(p.name)} detail" loading="lazy" decoding="async">
         <span class="card-slide-dots" aria-hidden="true"><i class="on"></i><i></i></span>
       </div>
       </a>
@@ -208,7 +213,12 @@
   function renderHero() {
     const slides = HERO_SLIDE_KEYS.map((k) => CATALOG.find((p) => p.key === k)).filter(Boolean);
     const slidesHtml = slides.map((p, i) =>
-      `<img class="hero-carousel-img${i === 0 ? ' active' : ''}" src="${p.img}" alt="${esc(p.name)}">`
+      // Slide 0 is the LCP candidate — load it eagerly at high priority.
+      // The rest crossfade in over the following seconds, so they can
+      // afford to be deprioritized instead of competing for bandwidth.
+      i === 0
+        ? `<img class="hero-carousel-img active" src="${p.img}" alt="${esc(p.name)}" fetchpriority="high">`
+        : `<img class="hero-carousel-img" src="${p.img}" alt="${esc(p.name)}" loading="lazy">`
     ).join('');
     return `
     <section class="hero wrap" id="home">
