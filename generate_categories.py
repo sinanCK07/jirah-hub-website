@@ -152,10 +152,11 @@ CATEGORIES = [
     {
         "key": "tees", "name": "Corporate T-Shirts", "cat": "Branded", "price": "AED 34 / pc",
         "img": "assets/tees.webp", "img2": "assets/tees-alt.webp",
-        "lede": "Polo and round-neck t-shirts printed with your logo — uniform-quality apparel for teams, promotions and giveaways, ordered in the quantities you actually need.",
+        "lede": "Customised polo, round-neck and other t-shirt styles printed with your company logo and name — perfect for teams, promotions, events, uniforms and giveaways. Choose the style, colours and quantities that suit your requirements, with professional-quality printing and reliable service from Jirah Hub.",
         "specs": [
-            "Styles: polo and round-neck",
-            "Colours: full range available, custom matching on request",
+            "Styles: polo, round-neck and other t-shirt styles",
+            "Sleeves: full sleeve or half sleeve, with or without cuffs",
+            "Colours: plain, single-colour or contrast-colour, full range available",
             "Sizes: S–3XL",
             "Printing: screen print, embroidery or heat transfer",
             "MOQ applies per print method — ask for details",
@@ -447,7 +448,7 @@ def page(cat, idx):
     </div>
   </div>
   <div class="wrap" style="padding-bottom:18px;font-size:12px;color:rgba(255,255,255,.65)">
-    &copy; <span id="year"></span> Jirah Hub General Trading. All rights reserved.
+    &copy; <span id="year"></span> Jirah Hub General Trading. All rights reserved. &middot; Developed by Adrovia Digital
   </div>
 </footer>
 

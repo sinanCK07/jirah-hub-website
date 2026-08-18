@@ -219,13 +219,18 @@ button { font-family: inherit; }
 
 /* ================= HERO ================= */
 .hero { position: relative; padding: clamp(24px,4vw,56px) 0 0; overflow: hidden; }
+/* top+bottom (not top+height) so the shape always spans the section's real
+   rendered height, including when that height is itself content-driven
+   (auto) rather than fixed — a plain percentage `height` doesn't reliably
+   resolve against an auto-height ancestor and was coming up short of the
+   text on some breakpoints. */
 .hero-blob-a {
-  position: absolute; left: -14%; bottom: -6%; width: 74%; height: 88%;
+  position: absolute; left: -14%; top: -6%; bottom: -6%; width: 74%;
   background: var(--tint-green); border-radius: 52% 48% 44% 56% / 58% 42% 58% 42%;
   opacity: .75; pointer-events: none;
 }
 .hero-blob-b {
-  position: absolute; right: -8%; top: 2%; width: 56%; height: 96%;
+  position: absolute; right: -8%; top: 2%; bottom: 2%; width: 56%;
   background: var(--tint-sand); border-radius: 50% 50% 46% 54% / 54% 46% 54% 46%;
   pointer-events: none;
 }
@@ -429,25 +434,13 @@ a.card-name:hover { color: var(--leaf); }
   .shop-hero-photo-sub { width: 34%; }
 }
 
-/* ---- product card slideshow (crossfades between two photos) ---- */
-.card-slides { position: relative; }
-.card-slide-img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; background: transparent;
-  opacity: 0; transition: opacity .6s ease;
-}
-.card-slide-img.active { opacity: 1; }
-.card-slide-dots {
-  position: absolute; left: 12px; bottom: 10px; display: flex; gap: 5px; z-index: 2;
-}
-.card-slide-dots i {
-  display: block; width: 5px; height: 5px; border-radius: 999px;
-  background: rgba(255,255,255,.55); transition: background .2s ease, transform .2s ease;
-}
-.card-slide-dots i.on { background: #fff; transform: scale(1.3); }
-
 /* ================= ABOUT PAGE ================= */
 .about-hero { position: relative; padding: clamp(30px,4vw,56px) 0 clamp(28px,4vw,52px); overflow: hidden; }
-.about-blob { position: absolute; left: -12%; top: 8%; width: 56%; height: 78%; background: var(--tint-green); border-radius: 52% 48% 44% 56% / 58% 42% 58% 42%; opacity: .6; pointer-events: none; }
+/* top+bottom, not top+height — see .hero-blob-a comment. The old top:8%/
+   height:78% also undershot on desktop whenever the photo column (which
+   sets .about-grid's height) was taller than the vertically-centered text
+   column, leaving the last line of copy outside the shape entirely. */
+.about-blob { position: absolute; left: -14%; top: -6%; bottom: -6%; width: 60%; background: var(--tint-green); border-radius: 52% 48% 44% 56% / 58% 42% 58% 42%; opacity: .6; pointer-events: none; }
 .about-grid { position: relative; display: grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap: clamp(28px,4vw,64px); align-items: center; }
 .about-title { margin: 14px 0 0; font-size: clamp(36px,4.4vw,56px); line-height: 1.08; color: var(--forest); }
 .about-copy p { margin: 16px 0 0; font-size: 16.5px; line-height: 1.68; color: var(--ink-muted); }
@@ -571,6 +564,11 @@ a.card-name:hover { color: var(--leaf); }
   .nav-toggle { display: grid; place-items: center; border: 0; background: transparent; color: var(--forest); cursor: pointer; padding: 4px; }
   .hero-grid { grid-template-columns: 1fr; min-height: 0; }
   .hero-visual { min-height: 320px; order: -1; }
+  /* Text runs full-width once the grid stacks to one column, so the blobs
+     (sized for the ~45%-wide desktop text column) need to widen too or
+     copy spills past their right edge onto plain background. */
+  .hero-blob-a { width: 92%; left: -8%; }
+  .about-blob { width: 92%; left: -8%; }
   .grid-5 { grid-template-columns: repeat(2,1fr); }
   .promises { grid-template-columns: repeat(2,1fr); }
   .qform { grid-template-columns: 1fr; }

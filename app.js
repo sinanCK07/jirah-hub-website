@@ -173,10 +173,8 @@
   function catalogueCard(p) {
     return `<article class="card reveal">
       <a href="category-${p.key}.html" aria-label="View details for ${esc(p.name)}">
-      <div class="card-media ratio-43 card-slides" data-slideshow>
-        <img class="card-slide-img active" src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
-        <img class="card-slide-img" src="${thumb(p.img2)}" alt="${esc(p.name)} detail" loading="lazy" decoding="async">
-        <span class="card-slide-dots" aria-hidden="true"><i class="on"></i><i></i></span>
+      <div class="card-media ratio-43">
+        <img src="${thumb(p.img)}" alt="${esc(p.name)}" loading="lazy" decoding="async">
       </div>
       </a>
       ${heartButton(p.key, p.name)}
@@ -189,29 +187,6 @@
         </div>
       </div>
     </article>`;
-  }
-
-  /* ---------------- Per-card auto slideshow (crossfades every ~1s) ---------------- */
-  let slideshowTimers = [];
-  function initCardSlideshows() {
-    slideshowTimers.forEach(clearInterval);
-    slideshowTimers = [];
-    const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
-    $$('[data-slideshow]').forEach((host, idx) => {
-      const imgs = $$('.card-slide-img', host);
-      const dots = $$('.card-slide-dots i', host);
-      if (imgs.length < 2) return;
-      let i = 0;
-      const timer = setInterval(() => {
-        const next = (i + 1) % imgs.length;
-        imgs[i].classList.remove('active');
-        imgs[next].classList.add('active');
-        if (dots.length) { dots[i].classList.remove('on'); dots[next].classList.add('on'); }
-        i = next;
-      }, 1000 + (idx % 4) * 120);
-      slideshowTimers.push(timer);
-    });
   }
 
   /* ---------------- HOME page ---------------- */
@@ -435,7 +410,6 @@
       ? visible.map(catalogueCard).join('')
       : `<p style="grid-column:1/-1;color:var(--ink-faint);padding:20px 0">No products match &ldquo;${esc(state.search)}&rdquo;.</p>`;
     initReveal();
-    initCardSlideshows();
   }
 
   /* ---------------- CONTACT page ---------------- */
