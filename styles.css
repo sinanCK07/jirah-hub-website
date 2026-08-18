@@ -25,11 +25,16 @@
   src: url('assets/fonts/dm-serif-display-400-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
+/* `optional`, not `swap`: Jost is the body font used almost everywhere,
+   so swapping it in after first paint reflows most of the page at once and
+   shows up as a large layout shift on whatever sits below the fold (the
+   footer, mainly). `optional` still uses the webfont when it's ready in
+   time (it's preloaded, so usually is) but never swaps late. */
 @font-face {
   font-family: 'Jost';
   font-style: normal;
   font-weight: 400 600;
-  font-display: swap;
+  font-display: optional;
   src: url('assets/fonts/jost-var-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
@@ -37,7 +42,7 @@
   font-family: 'Jost';
   font-style: normal;
   font-weight: 400 600;
-  font-display: swap;
+  font-display: optional;
   src: url('assets/fonts/jost-var-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
@@ -119,9 +124,9 @@ button { font-family: inherit; }
 /* ================= HEADER ================= */
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(245,247,250,.9);
+  background: rgba(227,233,246,.95); /* --tint-sand — a light tint of the footer's navy */
   backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(225,229,236,.7);
+  border-bottom: 1px solid rgba(15,46,92,.1);
 }
 .nav {
   max-width: var(--max); margin: 0 auto; padding: 16px var(--pad);
@@ -455,7 +460,7 @@ a.card-name:hover { color: var(--leaf); }
   display: grid; place-items: center; width: 46px; height: 46px; border-radius: 999px;
   background: var(--tint-green); color: var(--leaf-dark); font-size: 15px; font-weight: 500;
 }
-.mission-card h3 { margin: 18px 0 8px; font-size: 22px; color: var(--forest); }
+.mission-card h2 { margin: 18px 0 8px; font-size: 22px; color: var(--forest); }
 .mission-card p { margin: 0; font-size: 14.5px; line-height: 1.6; color: var(--ink-faint); }
 
 /* ================= CONTACT PAGE ================= */

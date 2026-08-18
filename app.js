@@ -57,11 +57,16 @@
   const $ = (sel, ctx) => (ctx || document).querySelector(sel);
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-  // Product photography ships two sizes: the plain filename (720px cap, used
-  // for hero/detail shots) and a `-360` variant for the small card grid —
-  // grid cards never render wider than ~235px, so the full-size asset is
-  // 2-3x more data than the display ever needs.
+  // Product photography ships three sizes: `-360` (card grid), the plain
+  // filename at 600px (default src for hero-class photos) and `-960`
+  // (retina/wide-viewport srcset descriptor for the same photos).
   const thumb = (img) => img.replace(/\.webp$/, '-360.webp');
+  const wide = (img) => img.replace(/\.webp$/, '-960.webp');
+  // srcset+sizes for a hero-class photo (carousel, category hero, circle,
+  // about) — `sizes` is a rough estimate of the CSS layout at each
+  // breakpoint so the browser can pick the closest match instead of always
+  // downloading the 960w file regardless of how small it actually renders.
+  const heroSrcset = (img, sizes) => `srcset="${thumb(img)} 360w, ${img} 600w, ${wide(img)} 960w" sizes="${sizes}"`;
 
   /* ---------------- State ---------------- */
   const state = {
@@ -212,13 +217,14 @@
   /* ---------------- HOME page ---------------- */
   function renderHero() {
     const slides = HERO_SLIDE_KEYS.map((k) => CATALOG.find((p) => p.key === k)).filter(Boolean);
+    const heroSizes = '(max-width: 760px) 88vw, 580px';
     const slidesHtml = slides.map((p, i) =>
       // Slide 0 is the LCP candidate — load it eagerly at high priority.
       // The rest crossfade in over the following seconds, so they can
       // afford to be deprioritized instead of competing for bandwidth.
       i === 0
-        ? `<img class="hero-carousel-img active" src="${p.img}" alt="${esc(p.name)}" fetchpriority="high">`
-        : `<img class="hero-carousel-img" src="${p.img}" alt="${esc(p.name)}" loading="lazy">`
+        ? `<img class="hero-carousel-img active" src="${p.img}" ${heroSrcset(p.img, heroSizes)} alt="${esc(p.name)}" fetchpriority="high">`
+        : `<img class="hero-carousel-img" src="${p.img}" ${heroSrcset(p.img, heroSizes)} alt="${esc(p.name)}" loading="lazy">`
     ).join('');
     return `
     <section class="hero wrap" id="home">
@@ -271,7 +277,7 @@
           <p class="circle-lede">Contract pricing, early access to new stock, and monthly restock reminders for your account.</p>
           <div id="circle-slot"></div>
         </div>
-        <div class="circle-photo"><img src="assets/packaging.webp" alt="Kraft packaging ready for delivery"></div>
+        <div class="circle-photo"><img src="assets/packaging.webp" ${heroSrcset('assets/packaging.webp', '(max-width: 640px) 90vw, 360px')} alt="Kraft packaging ready for delivery" loading="lazy" decoding="async"></div>
         <div class="circle-quote">
           <span class="circle-quote-mark">&ldquo;</span>
           <p class="circle-quote-text">Supply with purpose makes every order easier to place.</p>
@@ -309,12 +315,12 @@
             <p>We built it on one promise: quality products, trusted service, better value — with kinder materials wherever a greener option exists. One order, one invoice, one reliable delivery across all seven emirates.</p>
           </div>
         </div>
-        <div class="about-photo reveal about-photo-logo"><img src="assets/logo-full.webp" alt="Jirah Hub General Trading"></div>
+        <div class="about-photo reveal about-photo-logo"><img src="assets/logo-full.webp" ${heroSrcset('assets/logo-full.webp', '(max-width: 700px) 90vw, 450px')} alt="Jirah Hub General Trading" loading="lazy" decoding="async"></div>
       </div>
     </div>
     <div class="wrap" style="padding-bottom:clamp(48px,6vw,84px)">
       <div class="mission-grid">
-        ${mission.map((m, i) => `<div class="mission-card reveal"><span class="mission-no">0${i + 1}</span><h3>${esc(m.title)}</h3><p>${esc(m.body)}</p></div>`).join('')}
+        ${mission.map((m, i) => `<div class="mission-card reveal"><span class="mission-no">0${i + 1}</span><h2>${esc(m.title)}</h2><p>${esc(m.body)}</p></div>`).join('')}
       </div>
     </div>`;
   }
@@ -355,12 +361,22 @@
     const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduceMotion) return;
     let i = 0;
-    setInterval(() => {
+    const advance = () => {
       const next = (i + 1) % imgs.length;
       imgs[i].classList.remove('active');
       imgs[next].classList.add('active');
       i = next;
-    }, 1000);
+    };
+    // Slide 0 is the only slide that ships preloaded + fetchpriority=high,
+    // so it's the reliable LCP candidate — but on a slow connection the
+    // page can still be mid-render past the first 1s tick, and swapping
+    // away from it mid-measurement makes a non-preloaded image "win" LCP
+    // instead. Hold slide 0 for a few seconds before the carousel starts
+    // cycling at its normal pace.
+    setTimeout(() => {
+      advance();
+      setInterval(advance, 1000);
+    }, 3500);
   }
 
   /* ---------------- PRODUCTS page ---------------- */
@@ -385,8 +401,8 @@
           </a>
         </div>
         <div class="shop-hero-visual reveal">
-          <div class="shop-hero-photo-main"><img src="assets/cups.webp" alt="Paper cup range"></div>
-          <div class="shop-hero-photo-sub"><img src="assets/tea.webp" alt="Premium tea powder"></div>
+          <div class="shop-hero-photo-main"><img src="assets/cups.webp" ${heroSrcset('assets/cups.webp', '(max-width: 860px) 58vw, 380px')} alt="Paper cup range" fetchpriority="high"></div>
+          <div class="shop-hero-photo-sub"><img src="assets/tea.webp" ${heroSrcset('assets/tea.webp', '(max-width: 860px) 34vw, 240px')} alt="Premium tea powder" loading="lazy"></div>
           <span class="shop-hero-leaf">${ICON.leafBig}</span>
         </div>
       </div>

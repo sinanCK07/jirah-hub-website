@@ -278,6 +278,10 @@ def page(cat, idx):
         f'<div class="spec-item">{ICON_CHECK}<span>{e(s)}</span></div>' for s in cat["specs"]
     )
     uses_html = '\n            '.join(f'<span class="use-chip">{e(u)}</span>' for u in cat["uses"])
+    img_small = cat['img'][:-5] + '-360.webp'
+    img_large = cat['img'][:-5] + '-960.webp'
+    img_sizes = '(max-width: 720px) 92vw, 552px'
+    img_srcset = f'{img_small} 360w, {cat["img"]} 600w, {img_large} 960w'
 
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -307,7 +311,7 @@ def page(cat, idx):
 
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-var-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-serif-display-400-latin.woff2" crossorigin>
-<link rel="preload" as="image" href="{cat['img']}" fetchpriority="high">
+<link rel="preload" as="image" href="{cat['img']}" imagesrcset="{img_srcset}" imagesizes="{img_sizes}" fetchpriority="high">
 <link rel="stylesheet" href="styles.css?v=5">
 <script type="application/ld+json">
 {{
@@ -388,7 +392,7 @@ def page(cat, idx):
         </div>
       </div>
       <div class="cat-hero-media reveal">
-        <img src="{cat['img']}" alt="{e(cat['name'])}" fetchpriority="high">
+        <img src="{cat['img']}" srcset="{img_srcset}" sizes="{img_sizes}" alt="{e(cat['name'])}" fetchpriority="high">
       </div>
     </div>
   </section>
