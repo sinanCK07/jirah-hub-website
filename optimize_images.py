@@ -12,10 +12,13 @@ and wide shots both come out to a comparable pixel budget:
                                        the same hero-class images
 
 Real display widths for the hero-class photos run ~230-650 CSS px depending
-on breakpoint (see the Lighthouse "responsive images" audit), so a single
-flat file can't be right for all of them — templates pair the medium file
-with a srcset of all three sizes and a `sizes` estimate of the CSS layout,
-letting the browser pick the closest match for its viewport and DPR.
+on breakpoint (measured directly off Lighthouse's "responsive images" audit
+across several runs), clustering around 320px on mobile and 450-530px on
+everything from tablet up to the ~1240px container max. MEDIUM is set to
+480 to sit right in that cluster — templates pair it with a srcset of all
+three sizes and a `sizes` estimate of the CSS layout, letting the browser
+pick the closest match for its viewport and DPR instead of always
+downloading whichever tier happens to be the default.
 
 Product shots are cut-outs on transparent backgrounds, so the alpha channel has
 to survive. `alpha_quality` below 100 is where most of the byte saving comes
@@ -31,10 +34,10 @@ SRC = 'assets-src'
 OUT = 'assets'
 
 SMALL = 360
-MEDIUM = 600
+MEDIUM = 480
 LARGE = 960
-QUALITY = 62
-ALPHA_QUALITY = 66
+QUALITY = 58
+ALPHA_QUALITY = 58
 METHOD = 6
 
 # The logo doubles as the 40x40 brand mark in the header on every page;

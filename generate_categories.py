@@ -281,7 +281,7 @@ def page(cat, idx):
     img_small = cat['img'][:-5] + '-360.webp'
     img_large = cat['img'][:-5] + '-960.webp'
     img_sizes = '(max-width: 720px) 92vw, 552px'
-    img_srcset = f'{img_small} 360w, {cat["img"]} 600w, {img_large} 960w'
+    img_srcset = f'{img_small} 360w, {cat["img"]} 480w, {img_large} 960w'
 
     return f'''<!DOCTYPE html>
 <html lang="en">

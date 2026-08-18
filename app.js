@@ -58,7 +58,7 @@
   const $$ = (sel, ctx) => Array.from((ctx || document).querySelectorAll(sel));
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   // Product photography ships three sizes: `-360` (card grid), the plain
-  // filename at 600px (default src for hero-class photos) and `-960`
+  // filename at 480px (default src for hero-class photos) and `-960`
   // (retina/wide-viewport srcset descriptor for the same photos).
   const thumb = (img) => img.replace(/\.webp$/, '-360.webp');
   const wide = (img) => img.replace(/\.webp$/, '-960.webp');
@@ -66,7 +66,7 @@
   // about) — `sizes` is a rough estimate of the CSS layout at each
   // breakpoint so the browser can pick the closest match instead of always
   // downloading the 960w file regardless of how small it actually renders.
-  const heroSrcset = (img, sizes) => `srcset="${thumb(img)} 360w, ${img} 600w, ${wide(img)} 960w" sizes="${sizes}"`;
+  const heroSrcset = (img, sizes) => `srcset="${thumb(img)} 360w, ${img} 480w, ${wide(img)} 960w" sizes="${sizes}"`;
 
   /* ---------------- State ---------------- */
   const state = {
@@ -217,7 +217,12 @@
   /* ---------------- HOME page ---------------- */
   function renderHero() {
     const slides = HERO_SLIDE_KEYS.map((k) => CATALOG.find((p) => p.key === k)).filter(Boolean);
-    const heroSizes = '(max-width: 760px) 88vw, 580px';
+    // Measured off Lighthouse's own trace: the hero photo renders ~320px on
+    // phones, ~460-530px from tablet up through the ~1240px container max —
+    // it never actually reaches the 580px this used to claim, which was
+    // forcing the browser to skip the 480w tile and grab the 960w one on
+    // every non-mobile viewport.
+    const heroSizes = '(max-width: 760px) 85vw, (max-width: 1240px) 46vw, 480px';
     const slidesHtml = slides.map((p, i) =>
       // Slide 0 is the LCP candidate — load it eagerly at high priority.
       // The rest crossfade in over the following seconds, so they can
@@ -277,7 +282,7 @@
           <p class="circle-lede">Contract pricing, early access to new stock, and monthly restock reminders for your account.</p>
           <div id="circle-slot"></div>
         </div>
-        <div class="circle-photo"><img src="assets/packaging.webp" ${heroSrcset('assets/packaging.webp', '(max-width: 640px) 90vw, 360px')} alt="Kraft packaging ready for delivery" loading="lazy" decoding="async"></div>
+        <div class="circle-photo"><img src="assets/packaging.webp" ${heroSrcset('assets/packaging.webp', '(max-width: 640px) 90vw, (max-width: 900px) 45vw, 380px')} alt="Kraft packaging ready for delivery" loading="lazy" decoding="async"></div>
         <div class="circle-quote">
           <span class="circle-quote-mark">&ldquo;</span>
           <p class="circle-quote-text">Supply with purpose makes every order easier to place.</p>
@@ -730,7 +735,16 @@
   }
 
   /* ---------------- Boot ---------------- */
-  document.addEventListener('DOMContentLoaded', () => {
+  // Run synchronously instead of waiting for DOMContentLoaded: this script
+  // is the last thing before </body>, so the DOM — including the empty
+  // #app-main and the footer sitting right under it — is already fully
+  // parsed by the time we get here. Waiting for the event queues the render
+  // as a separate task and gives the browser a chance to paint that empty
+  // shell first (header, blank main, footer right underneath), which is
+  // exactly the footer layout shift Lighthouse keeps flagging once content
+  // pops in a moment later. Running inline means #app-main is populated
+  // before the parser even finishes, so there's nothing empty to paint.
+  (function boot() {
     const page = document.body.dataset.page;
     const main = $('#app-main');
 
@@ -771,5 +785,5 @@
     });
 
     initReveal();
-  });
+  })();
 })();
