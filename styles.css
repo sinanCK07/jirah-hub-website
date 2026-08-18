@@ -108,6 +108,16 @@ button { font-family: inherit; }
 ::selection { background: #D8E6CB; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 
+/* Only matches on the pages app.js still renders client-side (products,
+   contact) — index.html ships prerendered, so #app-main has children and
+   this never applies there. app.js is deferred, so the browser paints the
+   shell before the script runs; without a reserved height the footer would
+   paint directly under the header, then drop once the content lands. That
+   was worth 0.276 CLS the last time it happened. Holding a viewport of
+   space keeps the footer off-screen until it's in its final position, and
+   a shift below the fold costs nothing. */
+#app-main:empty { min-height: 100vh; }
+
 .wrap { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;

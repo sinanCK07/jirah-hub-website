@@ -777,21 +777,22 @@
   }
 
   /* ---------------- Boot ---------------- */
-  // Run synchronously instead of waiting for DOMContentLoaded: this script
-  // is the last thing before </body>, so the DOM is already fully parsed by
-  // the time we get here and waiting for the event would only queue the
-  // render as a separate task.
+  // This file is loaded with `defer`, so it runs once the document has been
+  // parsed and never blocks the parser. That matters: as a plain blocking
+  // script it sat in the critical path — 500 ms of download on Slow 4G —
+  // and Lighthouse attributed 2,050 ms of "element render delay" to the
+  // hero image because of it. The bytes were never the problem; the LCP
+  // image downloaded in 100 ms and then waited on the parser.
   //
-  // Running inline still isn't enough on its own for the home page: the
-  // browser paints whatever it has parsed while it's still downloading this
-  // 46 KB file, so on a slow connection it paints the header, an empty
-  // #app-main and the footer directly beneath it — then the footer slams
-  // down once we populate main. Lighthouse measured that as the *entire*
-  // CLS (0.276, attributed 100% to <footer class="site-footer">), and the
-  // same JS dependency delayed the hero image by 850 ms of "element render
-  // delay" on LCP. index.html therefore ships the home markup prerendered
-  // (see prerender_home.js) so both land in their final position on the
-  // first paint; we only fall back to rendering it here if it's missing.
+  // Deferring is only safe because index.html ships the home markup
+  // prerendered (see prerender_home.js), so nothing above the fold depends
+  // on this script running. On the pages still rendered here (products,
+  // contact) `#app-main:empty` reserves a viewport of height, which keeps
+  // the footer off-screen until the content lands rather than letting it
+  // paint under the header and drop — the failure that was worth 0.276 CLS.
+  //
+  // The DOM is fully parsed by the time this runs, so query it directly;
+  // there is no need to wait for DOMContentLoaded.
   (function boot() {
     const page = document.body.dataset.page;
     const main = $('#app-main');
