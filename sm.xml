@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://jirahhub.com/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://jirahhub.com/products</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jirahhub.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url><loc>https://jirahhub.com/category-cups</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-plates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-packaging</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-foil</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-disposables</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-tissue</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-bags</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-freshener</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-cleaning</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-stationery</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-tea</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-tees</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-jacket</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-cap</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-safetyshoe</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-helmet</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-boilersuit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-mug</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://jirahhub.com/category-pen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+</urlset>

@@ -293,7 +293,8 @@ def page(cat, idx):
 <meta name="description" content="{e(cat['lede'][:155])}">
 <meta name="theme-color" content="#0F2E5C">
 
-<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="canonical" href="https://jirahhub.com/category-{key}.html">
@@ -313,7 +314,7 @@ def page(cat, idx):
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-var-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-serif-display-400-latin.woff2" crossorigin>
 <link rel="preload" as="image" href="{cat['img']}" imagesrcset="{img_srcset}" imagesizes="{img_sizes}" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=11">
+<link rel="stylesheet" href="styles.css?v=12">
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
