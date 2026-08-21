@@ -41,7 +41,13 @@
   // at 4.6s. With the largest-area photo first, every later slide is equal or
   // smaller, so none of them can displace it and LCP stays pinned to the
   // image we actually preload.
-  const HERO_SLIDE_KEYS = ['tissue', 'cups', 'packaging', 'cleaning', 'tees', 'tea'];
+  // Slide 0 must be the *uniquely* largest, not merely joint-largest: a later
+  // slide with the same painted area can still re-trigger the LCP candidate
+  // as it crossfades in. tissue, cleaning, bags and disposables are all
+  // square (area 1.000), so the carousel carries exactly one of them and
+  // fills the rest from the ~0.667 shots. Foil stands in for cleaning here
+  // for that reason, not an editorial one.
+  const HERO_SLIDE_KEYS = ['tissue', 'cups', 'packaging', 'foil', 'tees', 'tea'];
   const SEGMENTS = [
     ['all', 'All products'], ['food', 'Foodservice'], ['hygiene', 'Hygiene & Cleaning'],
     ['office', 'Office'], ['safety', 'Safety & PPE'], ['brand', 'Pantry & Branded']
