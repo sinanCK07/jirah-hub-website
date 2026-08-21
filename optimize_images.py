@@ -40,15 +40,15 @@ QUALITY = 58
 ALPHA_QUALITY = 58
 METHOD = 6
 
-# The logo doubles as the 40x40 brand mark in the header on every page, so it
-# gets its own tiny variants instead of the shared -360 one. A 40px box is 80
-# physical pixels on a 2x phone and 120 on a 3x one, and a single 64px file
-# was being upscaled on both — hence a small density set.
+# The logo doubles as the brand mark in the header on every page, so it gets
+# its own tiny variants instead of the shared -360 one. The lockup is ~1.4:1,
+# so it sits in a 56x40 box: 112 physical pixels wide on a 2x phone and 168 on
+# a 3x one. These cap on the longest edge, which is the width.
 #
 # These encode far above the shared QUALITY too. 58 is tuned for photographs;
 # on a logo this small it smears the fine type and fringes the outlines, and
 # the whole set still costs only a few KB.
-EXTRA = {'logo-full.webp': [('logo-64.webp', 64), ('logo-80.webp', 80), ('logo-120.webp', 120)]}
+EXTRA = {'logo-full.webp': [('logo-56.webp', 56), ('logo-112.webp', 112), ('logo-168.webp', 168)]}
 EXTRA_QUALITY = 92
 EXTRA_ALPHA_QUALITY = 100
 

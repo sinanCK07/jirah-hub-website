@@ -9,25 +9,25 @@
 
   /* ---------------- Data ---------------- */
   const CATALOG = [
-    { key: 'cups', name: 'Paper Cups', cat: 'Foodservice', seg: 'food', sub: 'Single, double wall & ripple, 4–16 oz with lids.', price: 'AED 96 / carton', img: 'assets/cups.webp', img2: 'assets/cups-alt.webp' },
-    { key: 'plates', name: 'Paper Plates', cat: 'Foodservice', seg: 'food', sub: 'Round, square and compartment, paper & bagasse.', price: 'AED 68 / carton', img: 'assets/plates.webp', img2: 'assets/plates-alt.webp' },
-    { key: 'packaging', name: 'Kraft Food Boxes', cat: 'Packaging', seg: 'food', sub: 'Leak-resistant boxes, clamshells and carry bags.', price: 'AED 115 / carton', img: 'assets/packaging.webp', img2: 'assets/packaging-alt.webp' },
-    { key: 'foil', name: 'Foil & Cling Film', cat: 'Packaging', seg: 'food', sub: 'Catering rolls, hot-food containers, every gauge.', price: 'AED 88 / carton', img: 'assets/foil.webp', img2: 'assets/foil-alt.webp' },
-    { key: 'disposables', name: 'Disposables', cat: 'Foodservice', seg: 'food', sub: 'Cutlery, straws, stirrers and portion cups.', price: 'AED 54 / carton', img: 'assets/disposables.webp', img2: 'assets/disposables-alt.webp' },
-    { key: 'tissue', name: 'Tissue Paper', cat: 'Hygiene', seg: 'hygiene', sub: 'Facial, kitchen, toilet rolls and napkins.', price: 'AED 78 / carton', img: 'assets/tissue.webp', img2: 'assets/tissue-alt.webp' },
-    { key: 'bags', name: 'Garbage Bags', cat: 'Hygiene', seg: 'hygiene', sub: 'Bin liners and refuse sacks, roll or flat.', price: 'AED 62 / carton', img: 'assets/bags.webp', img2: 'assets/bags-alt.webp' },
-    { key: 'freshener', name: 'Air Freshener', cat: 'Hygiene', seg: 'hygiene', sub: 'Aerosol and auto-dispenser fragrance ranges.', price: 'AED 18 / can', img: 'assets/freshener.webp', img2: 'assets/freshener-alt.webp' },
-    { key: 'cleaning', name: 'Cleaning Range', cat: 'Cleaning', seg: 'hygiene', sub: 'Detergents, sanitisers and the tools to use them.', price: 'AED 42 / 5 L', img: 'assets/cleaning.webp', img2: 'assets/cleaning-alt.webp' },
-    { key: 'stationery', name: 'Office Stationery', cat: 'Office', seg: 'office', sub: 'Pens, paper, files and everyday desk supplies.', price: 'AED 24 / box', img: 'assets/stationery.webp', img2: 'assets/stationery-alt.webp' },
-    { key: 'tea', name: 'Premium Tea Powder', cat: 'Pantry', seg: 'brand', sub: 'Strong, consistent blends in retail & catering packs.', price: 'AED 32 / kg', img: 'assets/tea.webp', img2: 'assets/tea-alt.webp' },
-    { key: 'tees', name: 'Corporate T-Shirts', cat: 'Branded', seg: 'brand', sub: 'Polo and round-neck, printed with your logo.', price: 'AED 34 / pc', img: 'assets/tees.webp', img2: 'assets/tees-alt.webp' },
-    { key: 'jacket', name: 'Jacket Logo Printing', cat: 'Branded', seg: 'brand', sub: 'Softshell jackets printed or embroidered with your logo.', price: 'AED 65 / pc', img: 'assets/jacket.webp', img2: 'assets/jacket-alt.webp' },
-    { key: 'cap', name: 'Cap Printing', cat: 'Branded', seg: 'brand', sub: 'Cotton caps printed with your design, any colour.', price: 'AED 18 / pc', img: 'assets/cap.webp', img2: 'assets/cap-alt.webp' },
-    { key: 'safetyshoe', name: 'Safety Shoe', cat: 'Safety', seg: 'safety', sub: 'Steel-toe safety boots for site and warehouse work.', price: 'AED 65 / pair', img: 'assets/safetyshoe.webp', img2: 'assets/safetyshoe-alt.webp' },
-    { key: 'helmet', name: 'Safety Helmet', cat: 'Safety', seg: 'safety', sub: 'Impact-rated hard hats with adjustable strap.', price: 'AED 38 / pc', img: 'assets/helmet.webp', img2: 'assets/helmet-alt.webp' },
-    { key: 'boilersuit', name: 'Boiler Safety Suit', cat: 'Safety', seg: 'safety', sub: 'Flame-resistant coveralls with reflective safety tape.', price: 'AED 85 / pc', img: 'assets/boilersuit.webp', img2: 'assets/boilersuit-alt.webp' },
-    { key: 'mug', name: 'Mug Printing', cat: 'Branded', seg: 'brand', sub: 'Ceramic mugs printed with your logo or design.', price: 'AED 15 / pc', img: 'assets/mug.webp', img2: 'assets/mug-alt.webp' },
-    { key: 'pen', name: 'Corporate Pen Printing', cat: 'Branded', seg: 'brand', sub: 'Metal-body pens engraved or printed with your brand.', price: 'AED 6 / pc', img: 'assets/pen.webp', img2: 'assets/pen-alt.webp' }
+    { key: 'cups', name: 'Paper Cups', cat: 'Foodservice', seg: 'food', sub: 'Single, double wall & ripple, 4–16 oz with lids.', price: 'AED 96 / carton', img: 'assets/cups.webp' },
+    { key: 'plates', name: 'Paper Plates', cat: 'Foodservice', seg: 'food', sub: 'Round, square and compartment, paper & bagasse.', price: 'AED 68 / carton', img: 'assets/plates.webp' },
+    { key: 'packaging', name: 'Kraft Food Boxes', cat: 'Packaging', seg: 'food', sub: 'Leak-resistant boxes, clamshells and carry bags.', price: 'AED 115 / carton', img: 'assets/packaging.webp' },
+    { key: 'foil', name: 'Foil & Cling Film', cat: 'Packaging', seg: 'food', sub: 'Catering rolls, hot-food containers, every gauge.', price: 'AED 88 / carton', img: 'assets/foil.webp' },
+    { key: 'disposables', name: 'Disposables', cat: 'Foodservice', seg: 'food', sub: 'Cutlery, straws, stirrers and portion cups.', price: 'AED 54 / carton', img: 'assets/disposables.webp' },
+    { key: 'tissue', name: 'Tissue Paper', cat: 'Hygiene', seg: 'hygiene', sub: 'Facial, kitchen, toilet rolls and napkins.', price: 'AED 78 / carton', img: 'assets/tissue.webp' },
+    { key: 'bags', name: 'Garbage Bags', cat: 'Hygiene', seg: 'hygiene', sub: 'Bin liners and refuse sacks, roll or flat.', price: 'AED 62 / carton', img: 'assets/bags.webp' },
+    { key: 'freshener', name: 'Air Freshener', cat: 'Hygiene', seg: 'hygiene', sub: 'Aerosol and auto-dispenser fragrance ranges.', price: 'AED 18 / can', img: 'assets/freshener.webp' },
+    { key: 'cleaning', name: 'Cleaning Range', cat: 'Cleaning', seg: 'hygiene', sub: 'Detergents, sanitisers and the tools to use them.', price: 'AED 42 / 5 L', img: 'assets/cleaning.webp' },
+    { key: 'stationery', name: 'Office Stationery', cat: 'Office', seg: 'office', sub: 'Pens, paper, files and everyday desk supplies.', price: 'AED 24 / box', img: 'assets/stationery.webp' },
+    { key: 'tea', name: 'Premium Tea Powder', cat: 'Pantry', seg: 'brand', sub: 'Strong, consistent blends in retail & catering packs.', price: 'AED 32 / kg', img: 'assets/tea.webp' },
+    { key: 'tees', name: 'Corporate T-Shirts', cat: 'Branded', seg: 'brand', sub: 'Polo and round-neck, printed with your logo.', price: 'AED 34 / pc', img: 'assets/tees.webp' },
+    { key: 'jacket', name: 'Jacket Logo Printing', cat: 'Branded', seg: 'brand', sub: 'Softshell jackets printed or embroidered with your logo.', price: 'AED 65 / pc', img: 'assets/jacket.webp' },
+    { key: 'cap', name: 'Cap Printing', cat: 'Branded', seg: 'brand', sub: 'Cotton caps printed with your design, any colour.', price: 'AED 18 / pc', img: 'assets/cap.webp' },
+    { key: 'safetyshoe', name: 'Safety Shoe', cat: 'Safety', seg: 'safety', sub: 'Steel-toe safety boots for site and warehouse work.', price: 'AED 65 / pair', img: 'assets/safetyshoe.webp' },
+    { key: 'helmet', name: 'Safety Helmet', cat: 'Safety', seg: 'safety', sub: 'Impact-rated hard hats with adjustable strap.', price: 'AED 38 / pc', img: 'assets/helmet.webp' },
+    { key: 'boilersuit', name: 'Boiler Safety Suit', cat: 'Safety', seg: 'safety', sub: 'Flame-resistant coveralls with reflective safety tape.', price: 'AED 85 / pc', img: 'assets/boilersuit.webp' },
+    { key: 'mug', name: 'Mug Printing', cat: 'Branded', seg: 'brand', sub: 'Ceramic mugs printed with your logo or design.', price: 'AED 15 / pc', img: 'assets/mug.webp' },
+    { key: 'pen', name: 'Corporate Pen Printing', cat: 'Branded', seg: 'brand', sub: 'Metal-body pens engraved or printed with your brand.', price: 'AED 6 / pc', img: 'assets/pen.webp' }
   ];
 
   const FAVOURITE_KEYS = ['cups', 'tissue', 'packaging', 'cleaning', 'tees'];
@@ -411,16 +411,22 @@
       imgs[next].classList.add('active');
       i = next;
     };
-    // Slide 0 is the only slide that ships preloaded + fetchpriority=high,
-    // so it's the reliable LCP candidate — but on a slow connection the
-    // page can still be mid-render past the first 1s tick, and swapping
-    // away from it mid-measurement makes a non-preloaded image "win" LCP
-    // instead. Hold slide 0 for a few seconds before the carousel starts
-    // cycling at its normal pace.
-    setTimeout(() => {
+    // Hold slide 0 briefly before cycling: it's the only slide that ships
+    // preloaded at fetchpriority=high, so it's the reliable LCP candidate,
+    // and swapping away from it while the page is still rendering lets a
+    // non-preloaded image win LCP instead.
+    //
+    // This used to wait a flat 3.5s, which read as the carousel being
+    // broken. It no longer needs to — advance() now refuses to show a slide
+    // that hasn't decoded, so the guard is the decode check rather than the
+    // clock, and LCP has already settled by ~1.2s. Start from the load
+    // event (when the deferred slides begin fetching) plus a short beat.
+    const startCycling = () => setTimeout(() => {
       advance();
       setInterval(advance, 1000);
-    }, 3500);
+    }, 900);
+    if (document.readyState === 'complete') startCycling();
+    else window.addEventListener('load', startCycling, { once: true });
   }
 
   /* ---------------- PRODUCTS page ---------------- */

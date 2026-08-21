@@ -8,7 +8,7 @@ import html
 CATEGORIES = [
     {
         "key": "cups", "name": "Paper Cups", "cat": "Foodservice", "price": "AED 96 / carton",
-        "img": "assets/cups.webp", "img2": "assets/cups-alt.webp",
+        "img": "assets/cups.webp",
         "lede": "Our paper cup range covers every hot and cold beverage need — from double-wall ripple cups that insulate without a sleeve, to single-wall cups for cold drinks. Stocked in the sizes UAE cafés and offices order most, with matching lids always in stock.",
         "specs": [
             "Sizes: 4oz, 6oz, 8oz, 10oz, 12oz, 16oz",
@@ -21,7 +21,7 @@ CATEGORIES = [
     },
     {
         "key": "plates", "name": "Paper Plates", "cat": "Foodservice", "price": "AED 68 / carton",
-        "img": "assets/plates.webp", "img2": "assets/plates-alt.webp",
+        "img": "assets/plates.webp",
         "lede": "Round, square and compartment plates in paper and bagasse, built to hold hot food without soaking through — a practical, biodegradable alternative to reusable crockery for busy kitchens.",
         "specs": [
             "Sizes: 6″, 7″, 9″, 10″",
@@ -34,7 +34,7 @@ CATEGORIES = [
     },
     {
         "key": "packaging", "name": "Kraft Food Boxes", "cat": "Packaging", "price": "AED 115 / carton",
-        "img": "assets/packaging.webp", "img2": "assets/packaging-alt.webp",
+        "img": "assets/packaging.webp",
         "lede": "Leak-resistant kraft boxes, clamshells, carry bags and foil trays for hot, cold and greasy food — the full packaging line a kitchen needs to get orders out the door looking sharp.",
         "specs": [
             "Formats: kraft carry bags, food boxes, clamshells, foil trays",
@@ -47,7 +47,7 @@ CATEGORIES = [
     },
     {
         "key": "foil", "name": "Foil & Cling Film", "cat": "Packaging", "price": "AED 88 / carton",
-        "img": "assets/foil.webp", "img2": "assets/foil-alt.webp",
+        "img": "assets/foil.webp",
         "lede": "Catering-grade aluminium foil, cling film and disposable foil containers in every gauge a commercial kitchen runs through daily — from wrapping to full hot-food service trays.",
         "specs": [
             "Foil widths: 30cm, 45cm rolls; catering & jumbo lengths",
@@ -60,7 +60,7 @@ CATEGORIES = [
     },
     {
         "key": "disposables", "name": "Disposables", "cat": "Foodservice", "price": "AED 54 / carton",
-        "img": "assets/disposables.webp", "img2": "assets/disposables-alt.webp",
+        "img": "assets/disposables.webp",
         "lede": "Cutlery, straws, stirrers and portion cups for every foodservice counter — practical, consistent quality at prices that make sense at volume.",
         "specs": [
             "Cutlery: fork, knife, spoon — individually or as kits",
@@ -73,7 +73,7 @@ CATEGORIES = [
     },
     {
         "key": "tissue", "name": "Tissue Paper", "cat": "Hygiene", "price": "AED 78 / carton",
-        "img": "assets/tissue.webp", "img2": "assets/tissue-alt.webp",
+        "img": "assets/tissue.webp",
         "lede": "Facial tissue, kitchen rolls, toilet rolls and napkins in soft and strong grades, supplied in the volumes a hotel, office or restaurant actually uses.",
         "specs": [
             "Types: facial tissue, kitchen towel, toilet rolls, napkins",
@@ -86,7 +86,7 @@ CATEGORIES = [
     },
     {
         "key": "bags", "name": "Garbage Bags", "cat": "Hygiene", "price": "AED 62 / carton",
-        "img": "assets/bags.webp", "img2": "assets/bags-alt.webp",
+        "img": "assets/bags.webp",
         "lede": "Bin liners and refuse sacks in every size and thickness a facility needs, from kitchen bins to industrial waste — sold by the roll or flat-packed.",
         "specs": [
             "Sizes: small (30L), medium (60L), large (100L+), heavy-duty (150L+)",
@@ -99,7 +99,7 @@ CATEGORIES = [
     },
     {
         "key": "freshener", "name": "Air Freshener", "cat": "Hygiene", "price": "AED 18 / can",
-        "img": "assets/freshener.webp", "img2": "assets/freshener-alt.webp",
+        "img": "assets/freshener.webp",
         "lede": "Aerosol and auto-dispenser fragrance ranges that keep washrooms, offices and vehicles smelling clean all day — consistent scent, consistent stock.",
         "specs": [
             "Formats: aerosol cans, auto-dispenser refills",
@@ -112,7 +112,7 @@ CATEGORIES = [
     },
     {
         "key": "cleaning", "name": "Cleaning Range", "cat": "Cleaning", "price": "AED 42 / 5 L",
-        "img": "assets/cleaning.webp", "img2": "assets/cleaning-alt.webp",
+        "img": "assets/cleaning.webp",
         "lede": "Detergents, sanitisers, degreasers and the tools to use them — a complete cleaning programme for kitchens, washrooms and general facilities under one account.",
         "specs": [
             "Detergents: floor, glass, multi-surface, dishwash",
@@ -125,7 +125,7 @@ CATEGORIES = [
     },
     {
         "key": "stationery", "name": "Office Stationery", "cat": "Office", "price": "AED 24 / box",
-        "img": "assets/stationery.webp", "img2": "assets/stationery-alt.webp",
+        "img": "assets/stationery.webp",
         "lede": "Pens, paper, files and the everyday desk supplies an office reorders every month — one line item on your invoice instead of a dozen.",
         "specs": [
             "Writing: pens, pencils, markers, highlighters",
@@ -138,7 +138,7 @@ CATEGORIES = [
     },
     {
         "key": "tea", "name": "Premium Tea Powder", "cat": "Pantry", "price": "AED 32 / kg",
-        "img": "assets/tea.webp", "img2": "assets/tea-alt.webp",
+        "img": "assets/tea.webp",
         "lede": "Strong, consistent tea blends in retail and catering pack sizes — the same reliable cup, whether you're brewing one pot or serving a canteen.",
         "specs": [
             "Blends: classic strong blend; premium cardamom on request",
@@ -151,7 +151,7 @@ CATEGORIES = [
     },
     {
         "key": "tees", "name": "Corporate T-Shirts", "cat": "Branded", "price": "AED 34 / pc",
-        "img": "assets/tees.webp", "img2": "assets/tees-alt.webp",
+        "img": "assets/tees.webp",
         "lede": "Customised polo, round-neck and other t-shirt styles printed with your company logo and name — perfect for teams, promotions, events, uniforms and giveaways. Choose the style, colours and quantities that suit your requirements, with professional-quality printing and reliable service from Jirah Hub.",
         "specs": [
             "Styles: polo, round-neck and other t-shirt styles",
@@ -165,7 +165,7 @@ CATEGORIES = [
     },
     {
         "key": "jacket", "name": "Jacket Logo Printing", "cat": "Branded", "price": "AED 65 / pc",
-        "img": "assets/jacket.webp", "img2": "assets/jacket-alt.webp",
+        "img": "assets/jacket.webp",
         "lede": "Softshell and windbreaker jackets printed or embroidered with your company logo — a step up from t-shirts for staff who work outdoors or represent your brand off-site.",
         "specs": [
             "Styles: softshell, windbreaker, fleece-lined",
@@ -178,7 +178,7 @@ CATEGORIES = [
     },
     {
         "key": "cap", "name": "Cap Printing", "cat": "Branded", "price": "AED 18 / pc",
-        "img": "assets/cap.webp", "img2": "assets/cap-alt.webp",
+        "img": "assets/cap.webp",
         "lede": "Cotton dad caps printed with your logo or design — a low-cost, high-visibility branded item for staff, giveaways and events.",
         "specs": [
             "Material: 100% cotton twill",
@@ -191,7 +191,7 @@ CATEGORIES = [
     },
     {
         "key": "safetyshoe", "name": "Safety Shoe", "cat": "Safety", "price": "AED 65 / pair",
-        "img": "assets/safetyshoe.webp", "img2": "assets/safetyshoe-alt.webp",
+        "img": "assets/safetyshoe.webp",
         "lede": "Steel-toe safety boots built for site, warehouse and industrial work — reliable protection at a price that works across a full crew.",
         "specs": [
             "Toe protection: steel toe cap",
@@ -204,7 +204,7 @@ CATEGORIES = [
     },
     {
         "key": "helmet", "name": "Safety Helmet", "cat": "Safety", "price": "AED 38 / pc",
-        "img": "assets/helmet.webp", "img2": "assets/helmet-alt.webp",
+        "img": "assets/helmet.webp",
         "lede": "Impact-rated hard hats with an adjustable ratchet strap and reflective safety panels — standard-issue protection for any site or warehouse crew.",
         "specs": [
             "Shell: high-density impact-resistant plastic",
@@ -217,7 +217,7 @@ CATEGORIES = [
     },
     {
         "key": "boilersuit", "name": "Boiler Safety Suit", "cat": "Safety", "price": "AED 85 / pc",
-        "img": "assets/boilersuit.webp", "img2": "assets/boilersuit-alt.webp",
+        "img": "assets/boilersuit.webp",
         "lede": "Flame-resistant coveralls with reflective safety tape — full-body protection for oilfield, industrial and site work crews.",
         "specs": [
             "Material: flame-resistant treated cotton",
@@ -230,7 +230,7 @@ CATEGORIES = [
     },
     {
         "key": "mug", "name": "Mug Printing", "cat": "Branded", "price": "AED 15 / pc",
-        "img": "assets/mug.webp", "img2": "assets/mug-alt.webp",
+        "img": "assets/mug.webp",
         "lede": "Ceramic mugs printed with your logo or design — a practical everyday branded item for offices, gifting and giveaways.",
         "specs": [
             "Material: ceramic, dishwasher-safe printing",
@@ -243,7 +243,7 @@ CATEGORIES = [
     },
     {
         "key": "pen", "name": "Corporate Pen Printing", "cat": "Branded", "price": "AED 6 / pc",
-        "img": "assets/pen.webp", "img2": "assets/pen-alt.webp",
+        "img": "assets/pen.webp",
         "lede": "Metal-body pens engraved or printed with your brand — a low-cost giveaway that keeps your name on every desk it lands on.",
         "specs": [
             "Body: metal, matte or gloss finish",
@@ -314,7 +314,7 @@ def page(cat, idx):
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-var-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-serif-display-400-latin.woff2" crossorigin>
 <link rel="preload" as="image" href="{cat['img']}" imagesrcset="{img_srcset}" imagesizes="{img_sizes}" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=12">
+<link rel="stylesheet" href="styles.css?v=13">
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -334,7 +334,7 @@ def page(cat, idx):
 <header class="site-header">
   <nav class="nav">
     <a href="/" class="brand">
-      <span class="brand-mark"><img src="assets/logo-64.webp" srcset="assets/logo-64.webp 1x, assets/logo-80.webp 2x, assets/logo-120.webp 3x" alt="" width="40" height="40"></span>
+      <span class="brand-mark"><img src="assets/logo-56.webp" srcset="assets/logo-56.webp 1x, assets/logo-112.webp 2x, assets/logo-168.webp 3x" alt="" width="56" height="40"></span>
       <span class="brand-text">
         <span class="brand-name">jirah <span>hub</span></span>
         <span class="brand-sub">Quality &middot; Trusted &middot; Value</span>
@@ -447,6 +447,14 @@ def page(cat, idx):
       <a href="mailto:Sales@jirahhub.com">Sales@jirahhub.com</a>
       <span>Samnan, Sharjah &middot; Serving all seven emirates</span>
     </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/jirahhub" target="_blank" rel="noopener" aria-label="Jirah Hub on Instagram">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.facebook.com/profile.php?id=61593413732813" target="_blank" rel="noopener" aria-label="Jirah Hub on Facebook">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 3.5h-2.2A3.8 3.8 0 0 0 9.5 7.3V10H7.2v3.2h2.3V21h3.3v-7.8h2.4l.5-3.2h-2.9V7.6c0-.6.4-1 1-1h1.7z"/></svg>
+      </a>
+    </div>
   </div>
   <div class="wrap" style="padding-bottom:18px;font-size:12px;color:rgba(255,255,255,.65)">
     &copy; <span id="year"></span> Jirah Hub General Trading. All rights reserved. &middot; Developed by Adrovia Digital
@@ -455,7 +463,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=15" defer></script>
+<script src="app.js?v=16" defer></script>
 </body>
 </html>
 '''
