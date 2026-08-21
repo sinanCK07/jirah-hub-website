@@ -35,6 +35,10 @@ OUT = 'assets'
 
 SMALL = 360
 MEDIUM = 480
+# A rung between 480 and 960. Without it a phone at DPR 2.6 jumps straight to
+# the 960 tier for a hero that paints ~300 CSS px — 87 KiB where 51 KiB is
+# indistinguishable, on the one image that decides LCP.
+MID = 640
 LARGE = 960
 QUALITY = 58
 ALPHA_QUALITY = 58
@@ -79,6 +83,7 @@ def main():
 
         after += encode(im, SMALL, os.path.join(OUT, name[:-5] + '-360.webp'))
         after += encode(im, MEDIUM, os.path.join(OUT, name))
+        after += encode(im, MID, os.path.join(OUT, name[:-5] + '-640.webp'))
         after += encode(im, LARGE, os.path.join(OUT, name[:-5] + '-960.webp'))
         for extra_name, extra_cap in EXTRA.get(name, []):
             after += encode(im, extra_cap, os.path.join(OUT, extra_name),

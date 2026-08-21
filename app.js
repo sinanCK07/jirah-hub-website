@@ -71,12 +71,13 @@
   // filename at 480px (default src for hero-class photos) and `-960`
   // (retina/wide-viewport srcset descriptor for the same photos).
   const thumb = (img) => img.replace(/\.webp$/, '-360.webp');
+  const mid = (img) => img.replace(/\.webp$/, '-640.webp');
   const wide = (img) => img.replace(/\.webp$/, '-960.webp');
   // srcset+sizes for a hero-class photo (carousel, category hero, circle,
   // about) — `sizes` is a rough estimate of the CSS layout at each
   // breakpoint so the browser can pick the closest match instead of always
   // downloading the 960w file regardless of how small it actually renders.
-  const heroSrcset = (img, sizes) => `srcset="${thumb(img)} 360w, ${img} 480w, ${wide(img)} 960w" sizes="${sizes}"`;
+  const heroSrcset = (img, sizes) => `srcset="${thumb(img)} 360w, ${img} 480w, ${mid(img)} 640w, ${wide(img)} 960w" sizes="${sizes}"`;
 
   /* ---------------- State ---------------- */
   const state = {
@@ -220,7 +221,15 @@
     // it never actually reaches the 580px this used to claim, which was
     // forcing the browser to skip the 480w tile and grab the 960w one on
     // every non-mobile viewport.
-    const heroSizes = '(max-width: 760px) 85vw, (max-width: 1240px) 46vw, 480px';
+    // Measured, not guessed: on a 412px phone the hero photo box is 364x302
+    // and the square slides paint 302x302 inside it — the old 85vw claim
+    // overstated it. 59vw resolves to ~243px there, which lands the LCP image
+    // on the 640w tier (51 KiB) instead of 960w (87 KiB) at the ~2.6x DPR
+    // Lighthouse emulates. That is a deliberate cap at roughly 2x rendered
+    // resolution for a decorative product photo; 640/302 = 2.1x, which no
+    // phone screen resolves as soft, and it takes 36 KiB off the one image
+    // that decides LCP.
+    const heroSizes = '(max-width: 760px) 59vw, (max-width: 1240px) 46vw, 480px';
     const slidesHtml = slides.map((p, i) =>
       // Slide 0 is the LCP candidate — load it eagerly at high priority.
       //
