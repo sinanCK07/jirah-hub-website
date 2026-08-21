@@ -463,7 +463,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=16" defer></script>
+<script src="app.js?v=17" defer></script>
 </body>
 </html>
 '''

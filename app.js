@@ -31,7 +31,17 @@
   ];
 
   const FAVOURITE_KEYS = ['cups', 'tissue', 'packaging', 'cleaning', 'tees'];
-  const HERO_SLIDE_KEYS = ['cups', 'tissue', 'packaging', 'cleaning', 'tees', 'tea'];
+  // A square photo leads deliberately. The slides sit in a square box under
+  // object-fit:contain, so the painted area — which is what LCP measures —
+  // depends on each photo's aspect: the square shots (tissue, cleaning) fill
+  // 100% of the box while the portrait and landscape ones cover only ~67%.
+  // Leading with a portrait shot meant the preloaded, high-priority slide was
+  // never the largest paint, so the first square slide to crossfade in became
+  // a brand new LCP candidate at whatever late moment it arrived — measured
+  // at 4.6s. With the largest-area photo first, every later slide is equal or
+  // smaller, so none of them can displace it and LCP stays pinned to the
+  // image we actually preload.
+  const HERO_SLIDE_KEYS = ['tissue', 'cups', 'packaging', 'cleaning', 'tees', 'tea'];
   const SEGMENTS = [
     ['all', 'All products'], ['food', 'Foodservice'], ['hygiene', 'Hygiene & Cleaning'],
     ['office', 'Office'], ['safety', 'Safety & PPE'], ['brand', 'Pantry & Branded']
@@ -390,9 +400,16 @@
     // slides would only ever be dead weight — leave them unhydrated.
     if (reduceMotion) return;
 
-    // Pull the rest in once the page has finished loading, so they use idle
-    // bandwidth rather than the critical window.
-    const hydrateRest = () => imgs.slice(1).forEach(hydrateSlide);
+    // Slide 1 is the first crossfade target, so it has to be decoded before
+    // the carousel starts. Leaving it deferred like the rest cost 4.6s LCP:
+    // it only began downloading at the load event, advance() correctly
+    // refused to show it until decoded, and the swap that finally happened
+    // registered as a *new*, very late LCP candidate — the deferred slide
+    // beat the preloaded hero image outright. Fetch it now, at normal
+    // priority so it queues behind the preloaded slide 0 rather than racing
+    // it, and let the genuinely off-screen slides wait for the load event.
+    hydrateSlide(imgs[1]);
+    const hydrateRest = () => imgs.slice(2).forEach(hydrateSlide);
     if (document.readyState === 'complete') hydrateRest();
     else window.addEventListener('load', hydrateRest, { once: true });
 
