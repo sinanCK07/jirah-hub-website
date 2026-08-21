@@ -457,7 +457,12 @@
     ['pointerdown', 'pointermove', 'touchstart', 'keydown', 'scroll', 'wheel'].forEach((ev) => {
       window.addEventListener(ev, startCycling, { once: true, passive: true });
     });
-    setTimeout(startCycling, 6000);
+    // ...and start on its own shortly after load for anyone who just watches
+    // the hero without touching anything. Gating purely on interaction meant
+    // it never moved on open, which is not what a carousel should do.
+    const autoStart = () => setTimeout(startCycling, 1200);
+    if (document.readyState === 'complete') autoStart();
+    else window.addEventListener('load', autoStart, { once: true });
   }
 
   /* ---------------- PRODUCTS page ---------------- */
