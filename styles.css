@@ -571,9 +571,12 @@ a.card-name:hover { color: var(--leaf); }
 
 /* ================= FOOTER ================= */
 .site-footer { background: var(--forest); color: rgba(255,255,255,.8); }
+/* var(--pad), not 0: this is a .wrap too, and a shorthand with 0 in the
+   horizontal slot silently drops the gutters — the footer row then ran to
+   the screen edge while the copyright line right beneath it stayed inset. */
 .footer-row {
-  padding: clamp(30px,3.6vw,44px) 0; display: flex; flex-wrap: wrap; gap: 24px;
-  justify-content: space-between; align-items: center; font-size: 14px;
+  padding: clamp(30px,3.6vw,44px) var(--pad); display: flex; flex-wrap: wrap; gap: 24px;
+  justify-content: space-between; align-items: flex-start; font-size: 14px;
 }
 .footer-brand { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--cream); }
 .footer-brand span { color: var(--leaf-soft); }
@@ -581,6 +584,9 @@ a.card-name:hover { color: var(--leaf); }
 .footer-links { display: flex; flex-wrap: wrap; gap: clamp(16px,3vw,36px); }
 .footer-links a, .footer-links span { color: rgba(255,255,255,.85); }
 .footer-links a:hover { color: var(--leaf-soft); }
+/* Brand and its social icons form one block, icons sitting under the
+   wordmark rather than off at the far end of the row. */
+.footer-identity { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; }
 .footer-social { display: flex; gap: 12px; }
 .footer-social a {
   display: grid; place-items: center; width: 40px; height: 40px; border-radius: 999px;
