@@ -400,16 +400,9 @@
     // slides would only ever be dead weight — leave them unhydrated.
     if (reduceMotion) return;
 
-    // Slide 1 is the first crossfade target, so it has to be decoded before
-    // the carousel starts. Leaving it deferred like the rest cost 4.6s LCP:
-    // it only began downloading at the load event, advance() correctly
-    // refused to show it until decoded, and the swap that finally happened
-    // registered as a *new*, very late LCP candidate — the deferred slide
-    // beat the preloaded hero image outright. Fetch it now, at normal
-    // priority so it queues behind the preloaded slide 0 rather than racing
-    // it, and let the genuinely off-screen slides wait for the load event.
-    hydrateSlide(imgs[1]);
-    const hydrateRest = () => imgs.slice(2).forEach(hydrateSlide);
+    // Pull the rest in once the page has finished loading, so they use idle
+    // bandwidth rather than competing with the preloaded slide 0.
+    const hydrateRest = () => imgs.slice(1).forEach(hydrateSlide);
     if (document.readyState === 'complete') hydrateRest();
     else window.addEventListener('load', hydrateRest, { once: true });
 
@@ -428,22 +421,34 @@
       imgs[next].classList.add('active');
       i = next;
     };
-    // Hold slide 0 briefly before cycling: it's the only slide that ships
-    // preloaded at fetchpriority=high, so it's the reliable LCP candidate,
-    // and swapping away from it while the page is still rendering lets a
-    // non-preloaded image win LCP instead.
+    // Start cycling on the first sign of engagement rather than on a timer.
     //
-    // This used to wait a flat 3.5s, which read as the carousel being
-    // broken. It no longer needs to — advance() now refuses to show a slide
-    // that hasn't decoded, so the guard is the decode check rather than the
-    // clock, and LCP has already settled by ~1.2s. Start from the load
-    // event (when the deferred slides begin fetching) plus a short beat.
-    const startCycling = () => setTimeout(() => {
-      advance();
-      setInterval(advance, 1000);
-    }, 900);
-    if (document.readyState === 'complete') startCycling();
-    else window.addEventListener('load', startCycling, { once: true });
+    // The hero photo is the largest element on the page, so crossfading it
+    // while the page is still settling is expensive: a filmstrip of the
+    // mobile load showed the page visually complete at ~1.6s and the
+    // carousel then replacing that largest element at 3.7s and 4.2s. Every
+    // swap is fresh content the viewport hasn't shown yet, which is what
+    // Speed Index measures — it read 4.1s against a page that was actually
+    // done in 1.6s — and each swap also disturbs the LCP candidate.
+    //
+    // Waiting for interaction means the first paint is left alone to settle,
+    // and nobody watching the hero waits longer than it takes to move a
+    // finger or scroll. The timeout is a backstop for a viewer who does
+    // neither, deliberately long enough not to fire during load.
+    let started = false;
+    const startCycling = () => {
+      if (started) return;
+      started = true;
+      imgs.slice(1).forEach(hydrateSlide);   // make sure targets are fetching
+      setTimeout(() => {
+        advance();
+        setInterval(advance, 1000);
+      }, 250);
+    };
+    ['pointerdown', 'pointermove', 'touchstart', 'keydown', 'scroll', 'wheel'].forEach((ev) => {
+      window.addEventListener(ev, startCycling, { once: true, passive: true });
+    });
+    setTimeout(startCycling, 6000);
   }
 
   /* ---------------- PRODUCTS page ---------------- */
