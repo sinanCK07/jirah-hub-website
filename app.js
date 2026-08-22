@@ -876,6 +876,26 @@
       }
     }
 
+    // The careers form posts straight to FormSubmit as a normal multipart
+    // form — that's what carries the CV attachment, which the JSON endpoint
+    // the quote form uses can't do. FormSubmit then redirects back here with
+    // ?sent=1, so confirm the application landed rather than returning the
+    // applicant to an identical-looking empty form.
+    const applyStatus = $('#apply-status');
+    if (applyStatus && new URLSearchParams(location.search).get('sent')) {
+      const form = $('#apply-form');
+      if (form) form.remove();
+      applyStatus.innerHTML = `<div class="sent-state">
+          <span class="sent-check">${ICON.check}</span>
+          <h3>Application received</h3>
+          <p>Thanks for your interest in Jirah Hub. We&rsquo;ll review your details and get in touch if there&rsquo;s a good fit.</p>
+          <a class="btn-outline" href="/careers">Send another</a>
+        </div>`;
+      const clean = new URL(location.href);
+      clean.searchParams.delete('sent');
+      history.replaceState(null, '', clean.pathname + clean.search + clean.hash);
+    }
+
     // Product-detail pages ship their own static markup with a
     // [data-quote] CTA and heart button already in the HTML — bindGlobalEvents()
     // (delegated on document.body) picks those up automatically.

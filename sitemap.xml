@@ -34,4 +34,9 @@
   <url><loc>https://jirahhub.com/category-boilersuit</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jirahhub.com/category-mug</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://jirahhub.com/category-pen</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url>
+    <loc>https://jirahhub.com/careers</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 </urlset>

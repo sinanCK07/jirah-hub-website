@@ -13,6 +13,7 @@ Jirah Hub General Trading sells nineteen product categories under one account ac
 ## Pages
 - [Home](/): Brand overview, featured products, our story
 - [Shop All](/products): Full catalogue of all 19 product categories with filtering and search
+- [Careers](/careers): Open applications — send a CV to jobsjirahhub@gmail.com
 - [Contact / Request a Quote](/contact): Quote request form, FAQ, and contact details
 - 19 category detail pages (category-*.html): Specifications, use cases, and a quote CTA for each product
 

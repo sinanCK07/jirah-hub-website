@@ -314,7 +314,7 @@ def page(cat, idx):
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/jost-var-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="assets/fonts/dm-serif-display-400-latin.woff2" crossorigin>
 <link rel="preload" as="image" href="{cat['img']}" imagesrcset="{img_srcset}" imagesizes="{img_sizes}" fetchpriority="high">
-<link rel="stylesheet" href="styles.css?v=14">
+<link rel="stylesheet" href="styles.css?v=15">
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
@@ -345,6 +345,7 @@ def page(cat, idx):
       <a href="/" class="nav-link" data-page="home">Home</a>
       <a href="/products" class="nav-link" data-page="products" aria-current="page">Shop All</a>
       <a href="/#story" class="nav-link" data-page="story">Our Story</a>
+      <a href="/careers" class="nav-link" data-page="careers">Careers</a>
       <a href="/contact" class="nav-link" data-page="contact">Contact</a>
     </div>
 
@@ -455,6 +456,7 @@ def page(cat, idx):
       <a href="tel:+971541532561">+971 54 153 2561</a>
       <a href="tel:+971553262561">+971 55 326 2561</a>
       <a href="mailto:Sales@jirahhub.com">Sales@jirahhub.com</a>
+      <a href="/careers">Careers</a>
       <span>Samnan, Sharjah &middot; Serving all seven emirates</span>
     </div>
   </div>
@@ -465,7 +467,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=21" defer></script>
+<script src="app.js?v=22" defer></script>
 </body>
 </html>
 '''
