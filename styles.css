@@ -684,6 +684,14 @@ a.card-name:hover { color: var(--leaf); }
 .cat-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
 
 /* ================= CAREERS ================= */
+/* The decorative blob is absolutely positioned, so it paints above static
+   siblings — it was sitting on top of the hero copy and washing it out.
+   Positioning the copy puts it back in front, the same way .about-grid
+   does on the story section. */
+.cat-hero-copy { position: relative; z-index: 1; }
+/* Careers copy is the page's whole message rather than a caption under a
+   product shot, so it carries more weight than the shared category lede. */
+.cat-hero-copy .cat-hero-lede { color: var(--ink-soft); font-size: 17px; max-width: 60ch; }
 .perk-grid {
   display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
   gap: 14px 26px; margin-top: 6px;
