@@ -1,5 +1,5 @@
 (function () {
-  const HQ = { n: 'Sharjah', sub: 'Samnan · HQ', lon: 55.4211, lat: 25.3463 };
+  const HQ = { n: 'Sharjah', sub: 'Media City · HQ', lon: 55.4211, lat: 25.3463 };
   const CITIES = [
     { n: 'Abu Dhabi', lon: 54.3773, lat: 24.4539 },
     { n: 'Dubai', lon: 55.2708, lat: 25.2048 },

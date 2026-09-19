@@ -457,7 +457,7 @@ def page(cat, idx):
       <a href="tel:+971553262561">+971 55 326 2561</a>
       <a href="mailto:Sales@jirahhub.com">Sales@jirahhub.com</a>
       <a href="/careers">Careers</a>
-      <span>Samnan, Sharjah &middot; Serving all seven emirates</span>
+      <span>Sharjah Media City, Sharjah &middot; Serving all seven emirates</span>
     </div>
   </div>
   <div class="wrap" style="padding-bottom:18px;font-size:12px;color:rgba(255,255,255,.65)">
@@ -467,7 +467,7 @@ def page(cat, idx):
 
 <div class="toast" id="toast"></div>
 
-<script src="app.js?v=22" defer></script>
+<script src="app.js?v=23" defer></script>
 </body>
 </html>
 '''

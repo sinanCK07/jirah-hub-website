@@ -536,7 +536,7 @@
         links: PHONE_NUMBERS.map((p) => ({ text: p.display, href: 'https://wa.me/' + p.digits }))
       },
       { label: 'Email', icon: ICON.mail, links: [{ text: CONTACT_EMAIL, href: 'mailto:' + CONTACT_EMAIL }] },
-      { label: 'Visit', icon: ICON.pin, links: [{ text: 'Samnan, Sharjah, UAE', href: 'https://maps.google.com/?q=Samnan,Sharjah,UAE' }] }
+      { label: 'Visit', icon: ICON.pin, links: [{ text: 'Sharjah Media City, Sharjah, UAE', href: 'https://maps.google.com/?q=Sharjah+Media+City,Sharjah,UAE' }] }
     ];
     return `
     <div class="contact-hero wrap" id="contact">
