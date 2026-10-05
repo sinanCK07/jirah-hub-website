@@ -266,10 +266,26 @@ def subnav(active_key):
     items = []
     for c in CATEGORIES:
         current = ' aria-current="page"' if c["key"] == active_key else ''
-        items.append(f'<a href="category-{c["key"]}.html"{current}>{e(c["name"])}</a>')
+        items.append(f'<a href="/category-{c["key"]}"{current}>{e(c["name"])}</a>')
     return '\n        '.join(items)
 
 def page(cat, idx):
+    # On the structured data: these pages are marked up as WebPage, NOT Product.
+    #
+    # Product was tried and Search Console rejected every one of them with
+    # "Either offers, review, or aggregateRating should be specified" — a
+    # critical error that keeps the page out of rich results. All three of
+    # those are unavailable here on purpose. We publish no prices (the whole
+    # site routes buyers to a quote form), and Google's structured data policy
+    # forbids marking up content that isn't visible on the page, so an offers
+    # price would be a guideline violation even though CATEGORIES carries one.
+    # Inventing a review or aggregateRating is worse again — that's the kind of
+    # thing that earns a manual action.
+    #
+    # So: describe the page honestly as a WebPage, and take the rich result
+    # that IS legitimately available via BreadcrumbList. If prices are ever
+    # published on these pages, Product with a real offers block becomes
+    # correct and should come back.
     key = cat["key"]
     n = len(CATEGORIES)
     prev_cat = CATEGORIES[(idx - 1) % n]
@@ -297,10 +313,10 @@ def page(cat, idx):
 <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="canonical" href="https://jirahhub.com/category-{key}.html">
+<link rel="canonical" href="https://jirahhub.com/category-{key}">
 
 <meta property="og:type" content="product">
-<meta property="og:url" content="https://jirahhub.com/category-{key}.html">
+<meta property="og:url" content="https://jirahhub.com/category-{key}">
 <meta property="og:site_name" content="Jirah Hub General Trading">
 <meta property="og:title" content="{e(cat['name'])} — Jirah Hub General Trading">
 <meta property="og:description" content="{e(cat['lede'][:155])}">
@@ -318,12 +334,25 @@ def page(cat, idx):
 <script type="application/ld+json">
 {{
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{e(cat['name'])}",
-  "category": "{e(cat['cat'])}",
+  "@type": "WebPage",
+  "name": "{e(cat['name'])} — Jirah Hub General Trading",
+  "url": "https://jirahhub.com/category-{cat['key']}",
   "description": "{e(cat['lede'])}",
-  "image": "https://jirahhub.com/{cat['img']}",
-  "brand": {{ "@type": "Brand", "name": "Jirah Hub General Trading" }}
+  "primaryImageOfPage": {{ "@type": "ImageObject", "contentUrl": "https://jirahhub.com/{cat['img']}" }},
+  "about": {{ "@type": "Thing", "name": "{e(cat['name'])}" }},
+  "isPartOf": {{ "@type": "WebSite", "name": "Jirah Hub General Trading", "url": "https://jirahhub.com/" }},
+  "publisher": {{ "@type": "Organization", "name": "Jirah Hub General Trading", "url": "https://jirahhub.com/" }}
+}}
+</script>
+<script type="application/ld+json">
+{{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {{ "@type": "ListItem", "position": 1, "name": "Home", "item": "https://jirahhub.com/" }},
+    {{ "@type": "ListItem", "position": 2, "name": "Shop All", "item": "https://jirahhub.com/products" }},
+    {{ "@type": "ListItem", "position": 3, "name": "{e(cat['name'])}", "item": "https://jirahhub.com/category-{cat['key']}" }}
+  ]
 }}
 </script>
 </head>
@@ -428,11 +457,11 @@ def page(cat, idx):
   </section>
 
   <nav class="wrap cat-prevnext" aria-label="More categories">
-    <a href="category-{prev_cat['key']}.html">
+    <a href="/category-{prev_cat['key']}">
       <span class="dir">&larr; Previous</span>
       <span class="name">{e(prev_cat["name"])}</span>
     </a>
-    <a href="category-{next_cat['key']}.html" class="cp-next">
+    <a href="/category-{next_cat['key']}" class="cp-next">
       <span class="dir">Next &rarr;</span>
       <span class="name">{e(next_cat["name"])}</span>
     </a>
